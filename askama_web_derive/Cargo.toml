@@ -1,0 +1,21 @@
+[package]
+name = "askama_web_derive"
+version = "0.0.1-pre.0"
+edition = "2021"
+description = "Please see `askama_web` for more information."
+homepage = "https://askama.readthedocs.io/"
+repository = "https://github.com/Kijewski/askama_web/"
+license = "MIT OR Apache-2.0"
+rust-version = "1.81"
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--generate-link-to-definition", "--cfg=docsrs"]
+
+[lib]
+proc-macro = true
+
+[dependencies]
+proc-macro2 = "1.0.0"
+quote = "1.0.0"
+syn = "2.0.3"
