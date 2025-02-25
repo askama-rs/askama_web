@@ -6,7 +6,7 @@ description = "A compatibility add-on for Askama to support many different web f
 keywords = ["markup", "template", "jinja2", "html"]
 categories = ["template-engine"]
 homepage = "https://askama.readthedocs.io/"
-repository = "https://github.com/Kijewski/askama_web/"
+repository = "https://github.com/rinja-rs/askama_web/"
 license = "MIT OR Apache-2.0"
 rust-version = "1.81"
 

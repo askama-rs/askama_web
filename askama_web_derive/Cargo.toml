@@ -3,7 +3,7 @@ name = "askama_web_derive"
 version = "0.0.1-pre.0"
 edition = "2021"
 homepage = "https://askama.readthedocs.io/"
-repository = "https://github.com/Kijewski/askama_web/"
+repository = "https://github.com/rinja-rs/askama_web/"
 license = "MIT OR Apache-2.0"
 rust-version = "1.81"
 

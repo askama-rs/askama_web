@@ -1,7 +1,7 @@
 // SPDX-FileCopyrightText: 2025 The Askama Developers
 // SPDX-License-Identifier: Apache-2.0 OR MIT
 
-//! [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/Kijewski/askama_web/ci.yml?branch=main&style=flat-square&logo=github&logoColor=white "GitHub Workflow Status")](https://github.com/Kijewski/askama_web/actions/workflows/ci.yml)
+//! [![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/rinja-rs/askama_web/ci.yml?branch=main&style=flat-square&logo=github&logoColor=white "GitHub Workflow Status")](https://github.com/rinja-rs/askama_web/actions/workflows/ci.yml)
 //! [![Crates.io](https://img.shields.io/crates/v/askama_web?logo=rust&style=flat-square "Crates.io")](https://crates.io/crates/askama_web)
 //! [![docs.rs](https://img.shields.io/docsrs/askama_web?logo=docsdotrs&style=flat-square&logoColor=white "docs.rs")](https://docs.rs/askama_web/)
 //!
