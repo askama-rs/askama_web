@@ -3,6 +3,7 @@ use std::fmt::Display;
 use askama::Template;
 use askama_web::WebTemplate;
 use warp::Filter;
+use warp::reply::Reply;
 
 #[derive(Template, WebTemplate)]
 #[template(path = "hello.html")]
@@ -13,7 +14,7 @@ where
     name: &'a T,
 }
 
-fn hello() -> HelloTemplate<'static, &'static str> {
+fn hello() -> impl Reply {
     HelloTemplate { name: &"world" }
 }
 

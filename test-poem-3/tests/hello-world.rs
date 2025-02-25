@@ -3,7 +3,7 @@ use std::fmt::Display;
 use askama::Template;
 use askama_web::WebTemplate;
 use poem::test::TestClient;
-use poem::{Route, get, handler};
+use poem::{IntoResponse, Route, get, handler};
 
 #[derive(Template, WebTemplate)]
 #[template(path = "hello.html")]
@@ -15,7 +15,7 @@ where
 }
 
 #[handler]
-async fn hello() -> HelloTemplate<'static, &'static str> {
+async fn hello() -> impl IntoResponse {
     HelloTemplate { name: &"world" }
 }
 

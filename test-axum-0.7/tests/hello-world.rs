@@ -24,7 +24,7 @@ async fn hello() -> impl IntoResponse {
 }
 
 #[tokio::test]
-async fn hello_axum_0_8() {
+async fn hello_axum_0_7() {
     let app = Router::new().route("/", get(hello));
 
     let res = app

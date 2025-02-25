@@ -4,6 +4,7 @@ use askama::Template;
 use askama_web::WebTemplate;
 use rocket::http::Status;
 use rocket::local::asynchronous::Client;
+use rocket::response::Responder;
 use rocket::{async_test, get, launch, routes, uri};
 
 #[derive(Template, WebTemplate)]
@@ -16,7 +17,7 @@ where
 }
 
 #[get("/")]
-async fn hello() -> HelloTemplate<'static, &'static str> {
+async fn hello<'r>() -> impl Responder<'r, 'static> {
     HelloTemplate { name: &"world" }
 }
 
