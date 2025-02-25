@@ -4,9 +4,11 @@ members = [
     "askama_web",
     "askama_web_derive",
     "test-actix-web-4",
+    "test-axum-0.7",
     "test-axum-0.8",
     "test-poem-3",
     "test-rocket-0.5",
+    "test-salvo-0.76",
     "test-warp-0.3",
 ]
 

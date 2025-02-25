@@ -1,7 +1,8 @@
 use std::fmt::Display;
 
 use actix_web::http::header::CONTENT_TYPE;
-use actix_web::web;
+use actix_web::web::resource;
+use actix_web::{App, Responder};
 use askama::Template;
 use askama_web::WebTemplate;
 use bytes::Bytes;
@@ -15,13 +16,13 @@ where
     name: &'a T,
 }
 
+async fn hello() -> impl Responder {
+    HelloTemplate { name: &"world" }
+}
+
 #[actix_rt::test]
 async fn hello_actix_web_4() {
-    let srv = actix_test::start(|| {
-        actix_web::App::new()
-            .service(web::resource("/").to(|| async { HelloTemplate { name: &"world" } }))
-    });
-
+    let srv = actix_test::start(|| App::new().service(resource("/").to(hello)));
     let request = srv.get("/");
     let mut response = request.send().await.unwrap();
     assert!(response.status().is_success());
