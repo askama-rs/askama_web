@@ -74,7 +74,7 @@ and can be selected with their respective feature flag:
 As well as these logging / debugging facilities to print error message
 if a template could not be rendered:
 
-* `"eprintln"`: using rust's built-in [`eprintln!()`] macro
+* `"eprintln"`: using rust's built-in `eprintln!()` macro
 
 * `"log-0.4"`: using [log](https://docs.rs/log/0.4.x/) as logging framework
 
