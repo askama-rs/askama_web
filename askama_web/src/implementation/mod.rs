@@ -22,6 +22,8 @@ pub mod poem_3;
 pub mod rocket_0_5;
 #[cfg(feature = "salvo_core-0.76")]
 pub mod salvo_core_0_76;
+#[cfg(feature = "salvo_core-0.77")]
+pub mod salvo_core_0_77;
 #[cfg(feature = "warp-0.3")]
 pub mod warp_0_3;
 
@@ -37,6 +39,8 @@ pub use noop as poem_3;
 pub use noop as rocket_0_5;
 #[cfg(not(feature = "salvo_core-0.76"))]
 pub use noop as salvo_core_0_76;
+#[cfg(not(feature = "salvo_core-0.77"))]
+pub use noop as salvo_core_0_77;
 #[cfg(not(feature = "warp-0.3"))]
 pub use noop as warp_0_3;
 
@@ -50,6 +54,7 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::poem_3::derive!(@ $ast);
         $crate::__askama_web_impl::rocket_0_5::derive!(@ $ast);
         $crate::__askama_web_impl::salvo_core_0_76::derive!(@ $ast);
+        $crate::__askama_web_impl::salvo_core_0_77::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
     };
 }

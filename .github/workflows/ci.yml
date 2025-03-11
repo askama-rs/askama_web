@@ -20,7 +20,7 @@ jobs:
           set -eu
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 test-warp-0.3
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 test-salvo-0.77 test-warp-0.3
           do
             cd "$PKG"
             echo "Testing: $PKG"
@@ -84,7 +84,7 @@ jobs:
           set -eu
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 test-warp-0.3
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 test-salvo-0.77 test-warp-0.3
           do
             cd "$PKG"
             echo "Testing: $PKG"
@@ -97,7 +97,7 @@ jobs:
       matrix:
         package: [
             askama_web, askama_web_derive,
-            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-poem-3, test-rocket-0.5, test-salvo-0.76, test-warp-0.3,
+            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-poem-3, test-rocket-0.5, test-salvo-0.76, test-salvo-0.77, test-warp-0.3,
         ]
     runs-on: ubuntu-latest
     steps:

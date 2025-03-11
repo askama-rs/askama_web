@@ -14,7 +14,7 @@ the feature `"axum-0.8"` to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-askama_web = { version = "0.0.1-pre.0", features = ["axum-0.8"] }
+askama_web = { version = "0.12.0-pre.0", features = ["axum-0.8"] }
 ```
 
 Then just add `#[derive(WebTemplate)]` to your Askama templated `struct` or `enum`:
@@ -67,6 +67,10 @@ and can be selected with their respective feature flag:
 * `"salvo-0.76"` / `"salvo_core-0.76"`: implement [`Scribe`](https://docs.rs/salvo/0.76.2/salvo/trait.Scribe.html)
   for [salvo](https://docs.rs/salvo/0.76.x/) in version 0.76 /
   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
+
+* `"salvo-0.77"` / `"salvo_core-0.77"`: implement [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
+  for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
+  [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
 
 * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.3.x/) in version 0.3

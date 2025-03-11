@@ -9,6 +9,7 @@ members = [
     "test-poem-3",
     "test-rocket-0.5",
     "test-salvo-0.76",
+    "test-salvo-0.77",
     "test-warp-0.3",
 ]
 
