@@ -34,7 +34,8 @@ macro_rules! __askama_web_impl_actix_web_4 {
                     self,
                     req: &__askama_web::HttpRequest,
                 ) -> __askama_web::HttpResponse<Self::Body> {
-                    __askama_web::respond_to(<_ as __askama_web::Template>::render(&self), req)
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::respond_to(result, req)
                 }
             }
         };

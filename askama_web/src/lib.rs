@@ -15,7 +15,7 @@
 //!
 //! ```toml
 //! [dependencies]
-//! askama_web = { version = "0.12.0-pre.0", features = ["axum-0.8"] }
+//! askama_web = { version = "0.12.0", features = ["axum-0.8"] }
 //! ```
 //!
 //! Then just add <code>#[derive([WebTemplate])]</code> to your
@@ -24,10 +24,8 @@
 //! ```rust
 //! use askama::Template;
 //! use askama_web::WebTemplate;
-//! # /*
 //! use axum::Router;
 //! use axum::routing::get;
-//! # */
 //!
 //! #[derive(Template, WebTemplate)]
 //! #[template(path = "hello.html")]
@@ -41,60 +39,50 @@
 //!     }
 //! }
 //!
-//! # /*
 //! let app = Router::new().route("/", get(hello));
-//! # */
 //! ```
 //!
 //! By selecting the feature `"axum-0.8"`, `HelloTemplate` will implement [`axum::response::IntoResponse`].
 //! The user will receive a "Status: 200", "Content-Type: text/html; charset=utf-8"
 //! response with the rendered struct as body.
 //!
-//! [`axum::response::IntoResponse`]: https://docs.rs/actix-web/4.9.0/actix_web/dev/struct.ServiceResponse.html#method.into_response
+//! [`axum::response::IntoResponse`]: axum_core_0_5::response::IntoResponse
 //!
 //! ## Feature flags / web framework selection
 //!
 //! These web frameworks are currently implemented
 //! and can be selected with their respective feature flag:
 //!
-//! * `"actix-web-4"`: implement [`Responder`](https://docs.rs/actix-web/4.9.0/actix_web/trait.Responder.html)
+//! * `"actix-web-4"`: implement [`Responder`][actix_web_4::Responder]
 //!   for [actix-web](https://docs.rs/actix-web/4.x.x/) in version 4
-//!
-//! * `"axum-0.8"` / `"axum-core-0.5"`: implement [`IntoResponse`](https://docs.rs/axum-core/0.5.0/axum_core/response/trait.IntoResponse.html)
+//! * `"axum-0.8"` / `"axum-core-0.5"`: implement [`IntoResponse`][axum_core_0_5::response::IntoResponse]
 //!   for [axum](https://docs.rs/axum/0.8.x/) in version 0.8 /
 //!   [axum-core](https://docs.rs/axum-core/0.5.x/) in version 0.5
-//!
-//! * `"poem-3"`: implements for [`IntoResponse`](https://docs.rs/poem/3.1.7/poem/web/trait.IntoResponse.html) for
+//! * `"poem-3"`: implements for [`IntoResponse`][poem_3::web::IntoResponse] for
 //!   [poem](https://docs.rs/poem/3.x.x/) in version 3.x
-//!
-//! * `"rocket-0.5"`: implements [`Responder`](https://docs.rs/rocket/0.5.1/rocket/response/trait.Responder.html) for
+//! * `"rocket-0.5"`: implements [`Responder`][rocket_0_5::response::Responder] for
 //!   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
-//!
-//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implement [`Scribe`](https://docs.rs/salvo/0.76.2/salvo/trait.Scribe.html)
-//!   for [salvo](https://docs.rs/salvo/0.76.x/) in version 0.76 /
-//!   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
-//!
-//! * `"salvo-0.77"` / `"salvo_core-0.77"`: implement [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
-//!     for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
-//!     [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
-//!
-//! * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
+//! * `"salvo-0.77"` / `"salvo_core-0.77"`: implement [`Scribe`][salvo_core_0_77::Scribe]
+//!   for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
+//!   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
+//! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 //!
-//! As well as these logging / debugging facilities to print error message
+//! As well as these logging / debugging facilities to print error messages
 //! if a template could not be rendered:
 //!
 //! * `"eprintln"`: using rust's built-in [`eprintln!()`] macro
-//!
 //! * `"log-0.4"`: using [log](https://docs.rs/log/0.4.x/) as logging framework
-//!
 //! * `"tracing-0.1"`: using [tracing](https://docs.rs/tracing/0.1.x/) as logging framework
 //!
 //! Some older versions are implemented, too:
 //!
-//! * `"axum-0.7"` / `"axum-core-0.4"`: implement [`IntoResponse`](https://docs.rs/axum-core/0.4.9/axum_core/response/trait.IntoResponse.html)
+//! * `"axum-0.7"` / `"axum-core-0.4"`: implement [`IntoResponse`][axum_core_0_4::response::IntoResponse]
 //!   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
 //!   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
+//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implement [`Scribe`][salvo_core_0_76::Scribe]
+//!   for [salvo](https://docs.rs/salvo/0.76.x/) in version 0.76 /
+//!   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
 
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 

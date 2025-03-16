@@ -35,7 +35,8 @@ macro_rules! __askama_web_impl_rocket_0_5 {
                     self,
                     request: &$req __askama_web::Request<'_>,
                 ) -> __askama_web::Result<'static> {
-                    __askama_web::respond_to(<_ as __askama_web::Template>::render(&self), request)
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::respond_to(result, request)
                 }
             }
         };

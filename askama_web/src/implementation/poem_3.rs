@@ -30,7 +30,8 @@ macro_rules! __askama_web_impl_poem_3 {
                 #[inline]
                 #[track_caller]
                 fn into_response(self) -> $crate::__askama_web_impl::poem_3::Response {
-                    __askama_web::into_response(<Self as __askama_web::Template>::render(&self))
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::into_response(result)
                 }
             }
         };

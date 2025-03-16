@@ -27,7 +27,8 @@ macro_rules! __askama_web_impl_axum_core_0_5 {
                 #[inline]
                 #[track_caller]
                 fn into_response(self) -> $crate::__askama_web_impl::axum_core_0_5::Response {
-                    __askama_web::into_response(<Self as __askama_web::Template>::render(&self))
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::into_response(result)
                 }
             }
         };

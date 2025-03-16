@@ -1,12 +1,12 @@
 [package]
 name = "test-warp-0_3"
-version = "0.12.0-pre.0"
+version = "0.12.0"
 edition = "2021"
 publish = false
 
 [dev-dependencies]
 askama = "0.12.1"
-askama_web = { path = "../askama_web", version = "0.12.0-pre.0", features = ["warp-0.3"] }
+askama_web = { path = "../askama_web", version = "0.12.0", features = ["warp-0.3"] }
 
 tokio = { version = "1.43.0", features = ["macros", "rt"] }
 warp = { version = "0.3.7", default-features = false }

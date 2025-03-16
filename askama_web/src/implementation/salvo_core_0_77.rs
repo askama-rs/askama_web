@@ -27,7 +27,8 @@ macro_rules! __askama_web_impl_salvo_core_0_77 {
                 #[inline]
                 #[track_caller]
                 fn render(self, res: &mut __askama_web::Response) {
-                    __askama_web::render(<_ as __askama_web::Template>::render(&self), res)
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::render(result, res)
                 }
             }
         };

@@ -30,7 +30,8 @@ macro_rules! __askama_web_impl_warp_0_3 {
                 #[inline]
                 #[track_caller]
                 fn into_response(self) -> __askama_web::Response {
-                    __askama_web::into_response(<_ as __askama_web::Template>::render(&self))
+                    let result = <Self as __askama_web::Template>::render(&self);
+                    __askama_web::into_response(result)
                 }
             }
         };
