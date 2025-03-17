@@ -1,3 +1,5 @@
+pub use std::marker::Send;
+
 pub use askama::Template;
 use http_1::StatusCode;
 use http_1::header::{CONTENT_TYPE, HeaderValue};
@@ -10,7 +12,11 @@ pub use crate::__askama_web_impl_poem_3 as derive;
 macro_rules! __askama_web_impl_poem_3 {
     (@ $ast:tt) => {
         $crate::__askama_web_impl::askama_web_derive::impl_framework! {
-            $crate::__askama_web_impl::poem_3::derive!($ast where Self: Send);
+            $crate::__askama_web_impl::poem_3::derive!(
+                $ast
+                where
+                    Self: $crate::__askama_web_impl::poem_3::Send
+            );
         }
     };
     (
