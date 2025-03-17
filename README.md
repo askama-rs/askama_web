@@ -65,6 +65,9 @@ and can be selected with their respective feature flag:
   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
 * `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
+* `"viz-0.10"` / `"viz-core-0.10"`: implement [`IntoResponse`](https://docs.rs/viz/0.10.0/viz/trait.IntoResponse.html)
+  for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
+  [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
 * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 

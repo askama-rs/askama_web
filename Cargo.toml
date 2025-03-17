@@ -11,6 +11,7 @@ members = [
     "test-salvo-0.76",
     "test-salvo-0.77",
     "test-trillium-0.2",
+    "test-viz-0.10",
     "test-warp-0.3",
 ]
 

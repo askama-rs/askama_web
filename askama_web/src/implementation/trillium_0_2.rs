@@ -1,7 +1,7 @@
 pub use std::borrow::Cow;
 pub use std::boxed::Box;
 pub use std::future::Future;
-pub use std::marker::Send;
+pub use std::marker::{Send, Sync};
 pub use std::pin::Pin;
 pub use std::primitive::str;
 pub use std::stringify;
@@ -18,7 +18,10 @@ macro_rules! __askama_web_impl_trillium_0_2 {
     (@ $ast:tt) => {
         $crate::__askama_web_impl::askama_web_derive::impl_framework! {
             $crate::__askama_web_impl::trillium_0_2::derive!(
-                $ast where Self: Send + Sync + 'static
+                $ast where Self:
+                    $crate::__askama_web_impl::trillium_0_2::Send +
+                    $crate::__askama_web_impl::trillium_0_2::Sync +
+                    'static
             );
         }
     };

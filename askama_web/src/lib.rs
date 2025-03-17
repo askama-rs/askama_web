@@ -70,7 +70,10 @@
 //!   for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
 //!   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
 //! * `"trillium-0.2"`: implements [`Handler`][trillium_0_2::Handler] for
-//!     [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
+//!   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
+//! * `"viz-0.10"` / `"viz_core-0.10"`: implement [`IntoResponse`][viz_core_0_10::IntoResponse]
+//!   for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
+//!   [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
 //! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 //!
@@ -107,7 +110,7 @@ pub use askama_web_derive::WebTemplate;
 #[inline]
 #[track_caller]
 #[allow(unused)]
-fn render_error(_err: &askama::Error) {
+fn render_error(_err: &(impl std::error::Error + ?Sized)) {
     #[cfg(feature = "eprintln")]
     eprintln!(
         "[{}] Failed to render template: {_err}",
