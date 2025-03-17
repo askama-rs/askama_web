@@ -24,6 +24,8 @@ pub mod rocket_0_5;
 pub mod salvo_core_0_76;
 #[cfg(feature = "salvo_core-0.77")]
 pub mod salvo_core_0_77;
+#[cfg(feature = "trillium-0.2")]
+pub mod trillium_0_2;
 #[cfg(feature = "warp-0.3")]
 pub mod warp_0_3;
 
@@ -41,6 +43,8 @@ pub use noop as rocket_0_5;
 pub use noop as salvo_core_0_76;
 #[cfg(not(feature = "salvo_core-0.77"))]
 pub use noop as salvo_core_0_77;
+#[cfg(not(feature = "trillium-0.2"))]
+pub use noop as trillium_0_2;
 #[cfg(not(feature = "warp-0.3"))]
 pub use noop as warp_0_3;
 
@@ -55,6 +59,7 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::rocket_0_5::derive!(@ $ast);
         $crate::__askama_web_impl::salvo_core_0_76::derive!(@ $ast);
         $crate::__askama_web_impl::salvo_core_0_77::derive!(@ $ast);
+        $crate::__askama_web_impl::trillium_0_2::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
     };
 }
