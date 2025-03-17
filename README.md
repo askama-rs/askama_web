@@ -63,6 +63,8 @@ and can be selected with their respective feature flag:
 * `"salvo-0.77"` / `"salvo_core-0.77"`: implement [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
   for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
+* `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
+  [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
 * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 

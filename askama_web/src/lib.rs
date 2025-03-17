@@ -24,8 +24,10 @@
 //! ```rust
 //! use askama::Template;
 //! use askama_web::WebTemplate;
+//! # /*
 //! use axum::Router;
 //! use axum::routing::get;
+//! # */
 //!
 //! #[derive(Template, WebTemplate)]
 //! #[template(path = "hello.html")]
@@ -39,7 +41,9 @@
 //!     }
 //! }
 //!
+//! # /*
 //! let app = Router::new().route("/", get(hello));
+//! # */
 //! ```
 //!
 //! By selecting the feature `"axum-0.8"`, `HelloTemplate` will implement [`axum::response::IntoResponse`].
@@ -65,6 +69,8 @@
 //! * `"salvo-0.77"` / `"salvo_core-0.77"`: implement [`Scribe`][salvo_core_0_77::Scribe]
 //!   for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
 //!   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
+//! * `"trillium-0.2"`: implements [`Handler`][trillium_0_2::Handler] for
+//!     [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
 //! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 //!
@@ -77,11 +83,11 @@
 //!
 //! Some older versions are implemented, too:
 //!
-//! * `"axum-0.7"` / `"axum-core-0.4"`: implement [`IntoResponse`][axum_core_0_4::response::IntoResponse]
+//! * `"axum-0.7"` / `"axum-core-0.4"`: implement [`IntoResponse`](https://docs.rs/axum-core/0.4.5/axum_core/response/trait.IntoResponse.html)
 //!   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
 //!   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
-//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implement [`Scribe`][salvo_core_0_76::Scribe]
-//!   for [salvo](https://docs.rs/salvo/0.76.x/) in version 0.76 /
+//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implement [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
+//!   for [salvo](https://docs.rs/salvo/0.76.0/salvo/trait.Scribe.html) in version 0.76 /
 //!   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
 
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
