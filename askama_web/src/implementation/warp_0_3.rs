@@ -1,3 +1,5 @@
+pub use std::marker::Send;
+
 pub use askama::Template;
 use http_0_2::StatusCode;
 use warp_0_3::reply::html;
@@ -10,7 +12,11 @@ pub use crate::__askama_web_impl_warp_0_3 as derive;
 macro_rules! __askama_web_impl_warp_0_3 {
     (@ $ast:tt) => {
         $crate::__askama_web_impl::askama_web_derive::impl_framework! {
-            $crate::__askama_web_impl::warp_0_3::derive!($ast where Self: Send);
+            $crate::__askama_web_impl::warp_0_3::derive!(
+                $ast
+                where
+                    Self: $crate::__askama_web_impl::warp_0_3::Send
+            );
         }
     };
     (
