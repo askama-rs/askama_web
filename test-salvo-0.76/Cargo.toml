@@ -6,7 +6,7 @@ publish = false
 
 [dev-dependencies]
 askama = "0.12.1"
-askama_web = { path = "../askama_web", version = "0.12.0", features = ["salvo-0.76"] }
+askama_web = { path = "../askama_web", version = "0.12.1", features = ["salvo-0.76"] }
 
 salvo = { version = "0.76.2", default-features = false, features = ["test"] }
 tokio = { version = "1.43.0", features = ["macros", "rt"] }
