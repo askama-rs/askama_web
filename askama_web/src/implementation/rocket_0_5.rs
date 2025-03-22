@@ -4,8 +4,10 @@ use rocket_0_5::http::Status;
 use rocket_0_5::response::content::RawHtml;
 pub use rocket_0_5::response::{Responder, Result};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_rocket_0_5 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_rocket_0_5 {
@@ -41,6 +43,14 @@ macro_rules! __askama_web_impl_rocket_0_5 {
             }
         };
     };
+}
+
+impl<'r, T: Template> Responder<'r, 'static> for crate::WebResult<T> {
+    #[inline]
+    #[track_caller]
+    fn respond_to(self, request: &'r Request<'_>) -> Result<'static> {
+        respond_to(T::render(&self.0), request)
+    }
 }
 
 #[track_caller]

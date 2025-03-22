@@ -5,8 +5,10 @@ use http_0_2::StatusCode;
 use warp_0_3::reply::html;
 pub use warp_0_3::reply::{Reply, Response};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_warp_0_3 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_warp_0_3 {
@@ -42,6 +44,14 @@ macro_rules! __askama_web_impl_warp_0_3 {
             }
         };
     };
+}
+
+impl<T: Template + Send> Reply for crate::WebResult<T> {
+    #[inline]
+    #[track_caller]
+    fn into_response(self) -> Response {
+        into_response(T::render(&self.0))
+    }
 }
 
 #[track_caller]

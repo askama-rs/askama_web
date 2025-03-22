@@ -1,5 +1,11 @@
+#[cfg(feature = "derive")]
 pub use askama_web_derive;
 
+#[cfg(feature = "derive")]
+#[doc(inline)]
+pub use crate::__askama_web_impl as derive;
+
+#[cfg(feature = "derive")]
 pub mod noop {
     #[macro_export]
     #[doc(hidden)]
@@ -31,27 +37,28 @@ pub mod viz_core_0_10;
 #[cfg(feature = "warp-0.3")]
 pub mod warp_0_3;
 
-#[cfg(not(feature = "actix-web-4"))]
+#[cfg(all(feature = "derive", not(feature = "actix-web-4")))]
 pub use noop as actix_web_4;
-#[cfg(not(feature = "axum-core-0.4"))]
+#[cfg(all(feature = "derive", not(feature = "axum-core-0.4")))]
 pub use noop as axum_core_0_4;
-#[cfg(not(feature = "axum-core-0.5"))]
+#[cfg(all(feature = "derive", not(feature = "axum-core-0.5")))]
 pub use noop as axum_core_0_5;
-#[cfg(not(feature = "poem-3"))]
+#[cfg(all(feature = "derive", not(feature = "poem-3")))]
 pub use noop as poem_3;
-#[cfg(not(feature = "rocket-0.5"))]
+#[cfg(all(feature = "derive", not(feature = "rocket-0.5")))]
 pub use noop as rocket_0_5;
-#[cfg(not(feature = "salvo_core-0.76"))]
+#[cfg(all(feature = "derive", not(feature = "salvo_core-0.76")))]
 pub use noop as salvo_core_0_76;
-#[cfg(not(feature = "salvo_core-0.77"))]
+#[cfg(all(feature = "derive", not(feature = "salvo_core-0.77")))]
 pub use noop as salvo_core_0_77;
-#[cfg(not(feature = "trillium-0.2"))]
+#[cfg(all(feature = "derive", not(feature = "trillium-0.2")))]
 pub use noop as trillium_0_2;
-#[cfg(not(feature = "viz-core-0.10"))]
+#[cfg(all(feature = "derive", not(feature = "viz-core-0.10")))]
 pub use noop as viz_core_0_10;
-#[cfg(not(feature = "warp-0.3"))]
+#[cfg(all(feature = "derive", not(feature = "warp-0.3")))]
 pub use noop as warp_0_3;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl {
@@ -68,6 +75,3 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
     };
 }
-
-#[doc(inline)]
-pub use __askama_web_impl as derive;

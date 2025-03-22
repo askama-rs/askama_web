@@ -5,8 +5,10 @@ use actix_web_4::http::header::HeaderValue;
 pub use actix_web_4::{HttpRequest, HttpResponse, Responder};
 pub use askama::Template;
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_actix_web_4 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_actix_web_4 {
@@ -40,6 +42,16 @@ macro_rules! __askama_web_impl_actix_web_4 {
             }
         };
     };
+}
+
+impl<T: Template> Responder for crate::WebResult<T> {
+    type Body = BoxBody;
+
+    #[inline]
+    #[track_caller]
+    fn respond_to(self, req: &HttpRequest) -> HttpResponse<Self::Body> {
+        respond_to(T::render(&self.0), req)
+    }
 }
 
 #[track_caller]

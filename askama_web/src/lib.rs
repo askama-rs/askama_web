@@ -98,14 +98,109 @@
 mod implementation;
 
 #[doc(hidden)]
+#[cfg(feature = "derive")]
 pub mod __askama_web_impl {
     pub use crate::implementation::*;
 }
 
+use std::fmt;
+
+use askama::filters::FastWritable;
+use askama::{Template, Values};
+#[cfg(feature = "derive")]
 /// Implement the needed traits to use your template as a web response.
 ///
 /// Please see the [crate] root for more information.
 pub use askama_web_derive::WebTemplate;
+
+/// Extension trait to let any [`Template`] be usable as a [`WebResult`].
+pub trait WebResultExt: Template {
+    /// Treat a reference to a [`Template`] as [`WebResult`].
+    ///
+    /// In most cases [`.into_web_result()`][WebResultExt::into_web_result] will work better.
+    fn as_web_result(&self) -> WebResult<&Self>;
+
+    /// Treat a [`Template`] as [`WebResult`].
+    fn into_web_result(self) -> WebResult<Self>
+    where
+        Self: Sized;
+}
+
+impl<T: Template> WebResultExt for T {
+    #[inline]
+    fn as_web_result(&self) -> WebResult<&Self> {
+        WebResult(self)
+    }
+
+    #[inline]
+    fn into_web_result(self) -> WebResult<Self> {
+        WebResult(self)
+    }
+}
+
+/// Wrap a [`Template`] that does not derive [`WebTemplate`] to be usable as web response.
+///
+/// You might find [`WebResultExt::into_web_result()`] convenient to wrap a [`Template`] in a
+/// `WebResult`.
+pub struct WebResult<T: Template>(pub T);
+
+impl<T: Template> Template for WebResult<T> {
+    #[inline]
+    fn render(&self) -> askama::Result<String> {
+        <T as Template>::render(&self.0)
+    }
+
+    #[inline]
+    fn render_with_values(&self, values: &dyn Values) -> askama::Result<String> {
+        <T as Template>::render_with_values(&self.0, values)
+    }
+
+    #[inline]
+    fn render_into_with_values<W>(&self, writer: &mut W, values: &dyn Values) -> askama::Result<()>
+    where
+        W: fmt::Write + ?Sized,
+    {
+        <T as Template>::render_into_with_values(&self.0, writer, values)
+    }
+
+    #[inline]
+    fn render_into<W: fmt::Write + ?Sized>(&self, writer: &mut W) -> askama::Result<()> {
+        <T as Template>::render_into(&self.0, writer)
+    }
+
+    #[inline]
+    fn write_into<W: std::io::Write + ?Sized>(&self, writer: &mut W) -> std::io::Result<()> {
+        <T as Template>::write_into(&self.0, writer)
+    }
+
+    #[inline]
+    fn write_into_with_values<W: std::io::Write + ?Sized>(
+        &self,
+        writer: &mut W,
+        values: &dyn Values,
+    ) -> std::io::Result<()> {
+        <T as Template>::write_into_with_values(&self.0, writer, values)
+    }
+
+    const SIZE_HINT: usize = <T as Template>::SIZE_HINT;
+}
+
+impl<T: Template> FastWritable for WebResult<T> {
+    #[inline]
+    fn write_into<W: fmt::Write + ?Sized>(&self, dest: &mut W) -> askama::Result<()> {
+        <T as FastWritable>::write_into(&self.0, dest)
+    }
+}
+
+/// Implement the [`format!()`] trait for `WebResult<T>`.
+///
+/// Please be aware of the rendering performance notice in the [`Template`] trait.
+impl<T: Template> fmt::Display for WebResult<T> {
+    #[inline]
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        <T as fmt::Display>::fmt(&self.0, f)
+    }
+}
 
 #[inline]
 #[track_caller]

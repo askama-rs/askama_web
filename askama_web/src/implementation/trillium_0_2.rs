@@ -10,8 +10,10 @@ pub use askama::Template;
 use trillium_0_2::{Body, KnownHeaderName, Status};
 pub use trillium_0_2::{Conn, Handler};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_trillium_0_2 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_trillium_0_2 {
@@ -65,6 +67,18 @@ macro_rules! __askama_web_impl_trillium_0_2 {
             }
         };
     };
+}
+
+impl<T: Template + Send + Sync + 'static> Handler for crate::WebResult<T> {
+    #[inline]
+    #[must_use]
+    #[track_caller]
+    fn run<'a: 'b, 'b>(&'a self, conn: Conn) -> Pin<Box<dyn Future<Output = Conn> + Send + 'b>>
+    where
+        Self: 'b,
+    {
+        render(T::render(&self.0), conn)
+    }
 }
 
 #[must_use]

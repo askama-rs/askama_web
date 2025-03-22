@@ -7,8 +7,10 @@ use http_body_util_0_1::Full;
 use viz_core_0_10::{Body, Bytes};
 pub use viz_core_0_10::{IntoResponse, Response};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_viz_core_0_10 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_viz_core_0_10 {
@@ -44,6 +46,14 @@ macro_rules! __askama_web_impl_viz_core_0_10 {
             }
         };
     };
+}
+
+impl<T: Template> IntoResponse for crate::WebResult<T> {
+    #[inline]
+    #[track_caller]
+    fn into_response(self) -> Response {
+        into_response(T::render(&self.0))
+    }
 }
 
 #[track_caller]
