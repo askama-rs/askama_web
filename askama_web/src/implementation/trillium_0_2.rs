@@ -69,7 +69,7 @@ macro_rules! __askama_web_impl_trillium_0_2 {
     };
 }
 
-impl<T: Template + Send + Sync + 'static> Handler for crate::WebResult<T> {
+impl<T: Template + Send + Sync + 'static> Handler for crate::WebTemplate<T> {
     #[inline]
     #[must_use]
     #[track_caller]

@@ -1,7 +1,7 @@
 use std::fmt::Display;
 
 use askama::Template;
-use askama_web::WebResultExt;
+use askama_web::WebTemplateExt;
 use axum::Router;
 use axum::body::Body;
 use axum::http::{Request, StatusCode};
@@ -20,7 +20,7 @@ where
 }
 
 async fn hello() -> impl IntoResponse {
-    HelloTemplate { name: &"world" }.as_web_result()
+    HelloTemplate { name: &"world" }.as_web_template()
 }
 
 #[tokio::test]

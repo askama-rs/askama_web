@@ -46,7 +46,7 @@ macro_rules! __askama_web_impl_warp_0_3 {
     };
 }
 
-impl<T: Template + Send> Reply for crate::WebResult<T> {
+impl<T: Template + Send> Reply for crate::WebTemplate<T> {
     #[inline]
     #[track_caller]
     fn into_response(self) -> Response {

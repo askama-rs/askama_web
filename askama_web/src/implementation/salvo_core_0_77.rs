@@ -37,7 +37,7 @@ macro_rules! __askama_web_impl_salvo_core_0_77 {
     };
 }
 
-impl<T: Template> Scribe for crate::WebResult<T> {
+impl<T: Template> Scribe for crate::WebTemplate<T> {
     #[inline]
     #[track_caller]
     fn render(self, res: &mut Response) {
