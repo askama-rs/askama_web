@@ -3,8 +3,10 @@ use http_1::StatusCode;
 use salvo_core_0_77::writing::Text;
 pub use salvo_core_0_77::{Response, Scribe};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_salvo_core_0_77 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_salvo_core_0_77 {
@@ -33,6 +35,14 @@ macro_rules! __askama_web_impl_salvo_core_0_77 {
             }
         };
     };
+}
+
+impl<T: Template> Scribe for crate::WebResult<T> {
+    #[inline]
+    #[track_caller]
+    fn render(self, res: &mut Response) {
+        render(T::render(&self.0), res)
+    }
 }
 
 #[track_caller]

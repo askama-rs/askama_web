@@ -6,6 +6,7 @@ members = [
     "test-actix-web-4",
     "test-axum-0.7",
     "test-axum-0.8",
+    "test-axum-0.8-no-derive",
     "test-poem-3",
     "test-rocket-0.5",
     "test-salvo-0.76",

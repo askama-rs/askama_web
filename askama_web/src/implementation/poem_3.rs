@@ -5,8 +5,10 @@ use http_1::StatusCode;
 use http_1::header::{CONTENT_TYPE, HeaderValue};
 pub use poem_3::{IntoResponse, Response};
 
+#[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_poem_3 as derive;
 
+#[cfg(feature = "derive")]
 #[macro_export]
 #[doc(hidden)]
 macro_rules! __askama_web_impl_poem_3 {
@@ -42,6 +44,14 @@ macro_rules! __askama_web_impl_poem_3 {
             }
         };
     };
+}
+
+impl<T: Template + Send> IntoResponse for crate::WebResult<T> {
+    #[inline]
+    #[track_caller]
+    fn into_response(self) -> Response {
+        into_response(T::render(&self.0))
+    }
 }
 
 #[track_caller]
