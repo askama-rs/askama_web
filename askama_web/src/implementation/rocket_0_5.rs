@@ -45,7 +45,7 @@ macro_rules! __askama_web_impl_rocket_0_5 {
     };
 }
 
-impl<'r, T: Template> Responder<'r, 'static> for crate::WebResult<T> {
+impl<'r, T: Template> Responder<'r, 'static> for crate::WebTemplate<T> {
     #[inline]
     #[track_caller]
     fn respond_to(self, request: &'r Request<'_>) -> Result<'static> {

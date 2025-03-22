@@ -48,7 +48,7 @@ macro_rules! __askama_web_impl_viz_core_0_10 {
     };
 }
 
-impl<T: Template> IntoResponse for crate::WebResult<T> {
+impl<T: Template> IntoResponse for crate::WebTemplate<T> {
     #[inline]
     #[track_caller]
     fn into_response(self) -> Response {

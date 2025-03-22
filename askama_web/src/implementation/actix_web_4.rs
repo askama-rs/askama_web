@@ -44,7 +44,7 @@ macro_rules! __askama_web_impl_actix_web_4 {
     };
 }
 
-impl<T: Template> Responder for crate::WebResult<T> {
+impl<T: Template> Responder for crate::WebTemplate<T> {
     type Body = BoxBody;
 
     #[inline]

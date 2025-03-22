@@ -46,7 +46,7 @@ macro_rules! __askama_web_impl_poem_3 {
     };
 }
 
-impl<T: Template + Send> IntoResponse for crate::WebResult<T> {
+impl<T: Template + Send> IntoResponse for crate::WebTemplate<T> {
     #[inline]
     #[track_caller]
     fn into_response(self) -> Response {

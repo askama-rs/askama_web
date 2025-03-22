@@ -18,7 +18,7 @@
 //! askama_web = { version = "0.12.0", features = ["axum-0.8"] }
 //! ```
 //!
-//! Then just add <code>#[derive([WebTemplate])]</code> to your
+//! Then just add <code>#[derive([WebTemplate][derive@WebTemplate])]</code> to your
 //! [Askama templated][askama::Template] `struct` or `enum`:
 //!
 //! ```rust
@@ -110,41 +110,48 @@ use askama::{Template, Values};
 #[cfg(feature = "derive")]
 /// Implement the needed traits to use your template as a web response.
 ///
+/// Instead of this proc-macro, you can also you manually wrap a [`Template`] in
+/// [`WebTemplate`][struct@WebTemplate] or use [`WebTemplateExt::into_web_template()`].
+///
 /// Please see the [crate] root for more information.
 pub use askama_web_derive::WebTemplate;
 
-/// Extension trait to let any [`Template`] be usable as a [`WebResult`].
-pub trait WebResultExt: Template {
-    /// Treat a reference to a [`Template`] as [`WebResult`].
+/// Extension trait to let any [`Template`] be usable as a [`WebTemplate`][derive@WebTemplate].
+pub trait WebTemplateExt: Template {
+    /// Treat a reference to a [`Template`] as [`WebTemplate`][struct@WebTemplate].
     ///
-    /// In most cases [`.into_web_result()`][WebResultExt::into_web_result] will work better.
-    fn as_web_result(&self) -> WebResult<&Self>;
+    /// In most cases [`.into_web_template()`][WebTemplateExt::into_web_template] will work better.
+    fn as_web_template(&self) -> WebTemplate<&Self>;
 
-    /// Treat a [`Template`] as [`WebResult`].
-    fn into_web_result(self) -> WebResult<Self>
+    /// Treat a [`Template`] as [`WebTemplate`][struct@WebTemplate].
+    fn into_web_template(self) -> WebTemplate<Self>
     where
         Self: Sized;
 }
 
-impl<T: Template> WebResultExt for T {
+impl<T: Template> WebTemplateExt for T {
     #[inline]
-    fn as_web_result(&self) -> WebResult<&Self> {
-        WebResult(self)
+    fn as_web_template(&self) -> WebTemplate<&Self> {
+        WebTemplate(self)
     }
 
     #[inline]
-    fn into_web_result(self) -> WebResult<Self> {
-        WebResult(self)
+    fn into_web_template(self) -> WebTemplate<Self> {
+        WebTemplate(self)
     }
 }
 
-/// Wrap a [`Template`] that does not derive [`WebTemplate`] to be usable as web response.
+/// Wrap a [`Template`] that might not derive [`WebTemplate`][derive@WebTemplate] to be usable as
+/// web response.
 ///
-/// You might find [`WebResultExt::into_web_result()`] convenient to wrap a [`Template`] in a
-/// `WebResult`.
-pub struct WebResult<T: Template>(pub T);
+/// A [`Template`] wrapped in this `struct` implements all traits that were enabled through feature
+/// flags. Please see the [crate] documentation for a list of all supported feature flags / web
+/// frameworks.
+///
+/// You might also find [`WebTemplateExt::into_web_template()`] convenient.
+pub struct WebTemplate<T: Template>(pub T);
 
-impl<T: Template> Template for WebResult<T> {
+impl<T: Template> Template for WebTemplate<T> {
     #[inline]
     fn render(&self) -> askama::Result<String> {
         <T as Template>::render(&self.0)
@@ -185,17 +192,17 @@ impl<T: Template> Template for WebResult<T> {
     const SIZE_HINT: usize = <T as Template>::SIZE_HINT;
 }
 
-impl<T: Template> FastWritable for WebResult<T> {
+impl<T: Template> FastWritable for WebTemplate<T> {
     #[inline]
     fn write_into<W: fmt::Write + ?Sized>(&self, dest: &mut W) -> askama::Result<()> {
         <T as FastWritable>::write_into(&self.0, dest)
     }
 }
 
-/// Implement the [`format!()`] trait for `WebResult<T>`.
+/// Implement the [`format!()`] trait for `WebTemplate<T>`.
 ///
 /// Please be aware of the rendering performance notice in the [`Template`] trait.
-impl<T: Template> fmt::Display for WebResult<T> {
+impl<T: Template> fmt::Display for WebTemplate<T> {
     #[inline]
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         <T as fmt::Display>::fmt(&self.0, f)
