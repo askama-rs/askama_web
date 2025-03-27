@@ -5,8 +5,8 @@ edition = "2021"
 publish = false
 
 [dev-dependencies]
-askama = "0.13.0-pre.0"
-askama_web = { path = "../askama_web", version = "0.13.0-pre.0", features = ["salvo-0.76"] }
+askama = "0.13.0"
+askama_web = { path = "../askama_web", version = "0.13.0", features = ["salvo-0.76"] }
 
 salvo = { version = "0.76.2", default-features = false, features = ["test"] }
 tokio = { version = "1.43.0", features = ["macros", "rt"] }

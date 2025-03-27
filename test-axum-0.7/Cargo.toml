@@ -5,8 +5,8 @@ edition = "2021"
 publish = false
 
 [dev-dependencies]
-askama = "0.13.0-pre.0"
-askama_web = { path = "../askama_web", version = "0.13.0-pre.0", features = ["axum-0.7"] }
+askama = "0.13.0"
+askama_web = { path = "../askama_web", version = "0.13.0", features = ["axum-0.7"] }
 
 axum = { version = "0.7.9", default-features = false }
 http-body-util = "0.1.2"
