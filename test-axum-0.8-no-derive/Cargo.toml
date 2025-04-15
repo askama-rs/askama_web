@@ -6,9 +6,9 @@ publish = false
 
 [dev-dependencies]
 askama = "0.13.0"
-askama_web = { path = "../askama_web", version = "0.13.0", default-features = false, features = ["axum-0.8"] }
+askama_web = { path = "../askama_web", version = "0.13.1", default-features = false, features = ["axum-0.8"] }
 
-axum = { version = "0.8.1", default-features = false }
-http-body-util = "0.1.2"
-tokio = { version = "1.43.0", features = ["macros", "rt"] }
+axum = { version = "0.8.3", default-features = false }
+http-body-util = "0.1.3"
+tokio = { version = "1.44.2", features = ["macros", "rt"] }
 tower = { version = "0.5.2", features = ["util"] }

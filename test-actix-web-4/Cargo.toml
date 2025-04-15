@@ -6,9 +6,9 @@ publish = false
 
 [dev-dependencies]
 askama = "0.13.0"
-askama_web = { path = "../askama_web", version = "0.13.0", features = ["actix-web-4"] }
+askama_web = { path = "../askama_web", version = "0.13.1", features = ["actix-web-4"] }
 
 actix-rt = { version = "2.10.0", default-features = false }
 actix-test = "0.1.5"
-actix-web = { version = "4.9.0", default-features = false }
-bytes = { version = "1.10.0" }
+actix-web = { version = "4.10.2", default-features = false }
+bytes = { version = "1.10.1" }

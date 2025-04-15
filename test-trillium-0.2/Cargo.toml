@@ -6,7 +6,7 @@ publish = false
 
 [dev-dependencies]
 askama = "0.13.0"
-askama_web = { path = "../askama_web", version = "0.13.0", features = ["trillium-0.2"] }
+askama_web = { path = "../askama_web", version = "0.13.1", features = ["trillium-0.2"] }
 
 trillium = { version = "0.2.20", default-features = false }
 trillium-testing = "0.7.0"
