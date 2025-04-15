@@ -44,6 +44,7 @@ macro_rules! __askama_web_impl_trillium_0_2 {
                 #[inline]
                 #[must_use]
                 #[track_caller]
+                #[allow(single_use_lifetimes)] // false-positive
                 fn run<'__askama_web_self, '__askama_web_future>(
                     &'__askama_web_self self,
                     conn: __askama_web::Conn,
@@ -73,6 +74,7 @@ impl<T: Template + Send + Sync + 'static> Handler for crate::WebTemplate<T> {
     #[inline]
     #[must_use]
     #[track_caller]
+    #[allow(single_use_lifetimes)] // false-positive
     fn run<'a: 'b, 'b>(&'a self, conn: Conn) -> Pin<Box<dyn Future<Output = Conn> + Send + 'b>>
     where
         Self: 'b,

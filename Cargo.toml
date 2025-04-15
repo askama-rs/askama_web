@@ -32,7 +32,7 @@ non_ascii_idents = "warn"
 noop_method_call = "warn"
 single_use_lifetimes = "warn"
 trivial_casts = "warn"
-unreachable_pub = "warn"
+# unreachable_pub = "warn"
 unused_crate_dependencies = "warn"
 warnings = "warn"
 

@@ -98,6 +98,7 @@
 
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
+#[doc(hidden)]
 mod implementation;
 
 #[doc(hidden)]
@@ -152,6 +153,7 @@ impl<T: Template> WebTemplateExt for T {
 /// frameworks.
 ///
 /// You might also find [`WebTemplateExt::into_web_template()`] convenient.
+#[derive(Debug, Clone, Copy)]
 pub struct WebTemplate<T: Template>(pub T);
 
 impl<T: Template> Template for WebTemplate<T> {

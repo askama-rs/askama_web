@@ -12,6 +12,7 @@ use syn::{
     parse_macro_input,
 };
 
+/// Implement the needed traits to use your template as a web response.
 #[proc_macro_derive(WebTemplate)]
 pub fn derive_into_response(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     use proc_macro::{Delimiter, Group, Ident, Punct, Spacing, Span, TokenStream, TokenTree};
@@ -32,6 +33,7 @@ pub fn derive_into_response(input: proc_macro::TokenStream) -> proc_macro::Token
     ])
 }
 
+/// Callback for a framework implementation.
 #[proc_macro]
 pub fn impl_framework(input: proc_macro::TokenStream) -> proc_macro::TokenStream {
     let ImplFrameWork {
@@ -87,7 +89,7 @@ struct ImplFrameWork {
 }
 
 impl Parse for ImplFrameWork {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let path = input.parse()?;
         let bang = input.parse()?;
 
@@ -114,7 +116,7 @@ impl Parse for ImplFrameWork {
 struct Bracketed<T>(T);
 
 impl<T: Parse> Parse for Bracketed<T> {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let ast_content;
         bracketed!(ast_content in input);
         let inner: T = ast_content.parse()?;
@@ -130,7 +132,7 @@ struct Params {
 }
 
 impl Parse for Params {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
         let generics = if input.peek(Token![<]) {
             let _: Token![<] = input.parse()?;
 
@@ -166,10 +168,11 @@ impl Parse for Params {
 struct Eof;
 
 impl Parse for Eof {
-    fn parse(input: ParseStream) -> syn::Result<Self> {
-        match input.is_empty() {
-            true => Ok(Eof),
-            false => Err(syn::Error::new(input.span(), "expected end of input")),
+    fn parse(input: ParseStream<'_>) -> syn::Result<Self> {
+        if input.is_empty() {
+            Ok(Eof)
+        } else {
+            Err(syn::Error::new(input.span(), "expected end of input"))
         }
     }
 }
