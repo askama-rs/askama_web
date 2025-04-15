@@ -60,3 +60,6 @@ derive = ["dep:askama_web_derive"]
 eprintln = []
 "log-0.4" = ["dep:log_0_4"]
 "tracing-0.1" = ["dep:tracing_0_1"]
+
+[lints]
+workspace = true
