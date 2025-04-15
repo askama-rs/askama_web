@@ -66,9 +66,9 @@
 //!   [poem](https://docs.rs/poem/3.x.x/) in version 3.x
 //! * `"rocket-0.5"`: implements [`Responder`][rocket_0_5::response::Responder] for
 //!   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
-//! * `"salvo-0.77"` / `"salvo_core-0.77"`: implements [`Scribe`][salvo_core_0_77::Scribe]
-//!   for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
-//!   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
+//! * `"salvo-0.78"` / `"salvo_core-0.78"`: implements [`Scribe`][salvo_core_0_77::Scribe]
+//!   for [salvo](https://docs.rs/salvo/0.78.x/) in version 0.78 /
+//!   [salvo_core](https://docs.rs/salvo_core/0.78.x/) in version 0.78
 //! * `"trillium-0.2"`: implements [`Handler`][trillium_0_2::Handler] for
 //!   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
 //! * `"viz-0.10"` / `"viz_core-0.10"`: implements [`IntoResponse`][viz_core_0_10::IntoResponse]
@@ -89,9 +89,12 @@
 //! * `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.5/axum_core/response/trait.IntoResponse.html)
 //!   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
 //!   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
-//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implements [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
+//! * `"salvo-0.76"` / `"salvo_core-0.76"`: implements [`Scribe`](https://docs.rs/salvo/0.76.0/salvo/trait.Scribe.html)
 //!   for [salvo](https://docs.rs/salvo/0.76.0/salvo/trait.Scribe.html) in version 0.76 /
 //!   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
+//! * `"salvo-0.77"` / `"salvo_core-0.77"`: implements [`Scribe`](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html)
+//!   for [salvo](https://docs.rs/salvo/0.77.0/salvo/trait.Scribe.html) in version 0.77 /
+//!   [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
 
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
