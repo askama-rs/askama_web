@@ -80,12 +80,15 @@ if a template could not be rendered:
 
 Some older versions are implemented, too:
 
-* `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.5/axum_core/response/trait.IntoResponse.html)
+* `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.x/axum_core/response/trait.IntoResponse.html)
   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
-* `"salvo-0.76"` / `"salvo_core-0.76"`: implements [`Scribe`](https://docs.rs/salvo/0.76.2/salvo/trait.Scribe.html)
+* `"salvo-0.76"` / `"salvo_core-0.76"`: implements [`Scribe`](https://docs.rs/salvo/0.76.x/salvo/trait.Scribe.html)
   for [salvo](https://docs.rs/salvo/0.76.x/) in version 0.76 /
   [salvo_core](https://docs.rs/salvo_core/0.76.x/) in version 0.76
+* `"salvo-0.77"` / `"salvo_core-0.77"`: implements [`Scribe`](https://docs.rs/salvo/0.77.x/salvo/trait.Scribe.html)
+  for [salvo](https://docs.rs/salvo/0.77.x/) in version 0.77 /
+  [salvo_core](https://docs.rs/salvo_core/0.77.x/) in version 0.77
 
 ## License
 

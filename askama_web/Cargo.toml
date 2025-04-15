@@ -29,6 +29,7 @@ poem_3 = { package = "poem", version = "3.0.0", optional = true, default-feature
 rocket_0_5 = { package = "rocket", version = "0.5.0", optional = true, default-features = false }
 salvo_core_0_76 = { package = "salvo_core", version = "0.76.0", optional = true, default-features = false }
 salvo_core_0_77 = { package = "salvo_core", version = "0.77.0", optional = true, default-features = false }
+salvo_core_0_78 = { package = "salvo_core", version = "0.78.0", optional = true, default-features = false }
 tracing_0_1 = { package = "tracing", version = "0.1.0", optional = true, default-features = false }
 trillium_0_2 = { package = "trillium", version = "0.2.0", optional = true, default-features = false }
 viz_core_0_10 = { package = "viz-core", version = "0.10.0", optional = true, default-features = false }
@@ -50,6 +51,7 @@ derive = ["dep:askama_web_derive"]
 "salvo-0.77" = ["salvo_core-0.77"]
 "salvo_core-0.76" = ["dep:salvo_core_0_76", "dep:http_1"]
 "salvo_core-0.77" = ["dep:salvo_core_0_77", "dep:http_1"]
+"salvo_core-0.78" = ["dep:salvo_core_0_78", "dep:http_1"]
 "trillium-0.2" = ["dep:trillium_0_2"]
 "viz-0.10" = ["viz-core-0.10"]
 "viz-core-0.10" = ["dep:viz_core_0_10", "dep:http_1", "dep:http_body_util_0_1"]
