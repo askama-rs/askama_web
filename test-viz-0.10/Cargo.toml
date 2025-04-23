@@ -5,8 +5,8 @@ edition = "2021"
 publish = false
 
 [dev-dependencies]
-askama = "0.13.0"
-askama_web = { path = "../askama_web", version = "0.13.1", features = ["viz-0.10"] }
+askama.workspace = true
+askama_web = { workspace = true, features = ["viz-0.10"] }
 
 tokio = { version = "1.44.2", features = ["macros", "rt"] }
 viz = { version = "0.10.0", features = ["macros"] }

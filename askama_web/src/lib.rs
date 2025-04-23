@@ -109,8 +109,7 @@ pub mod __askama_web_impl {
 
 use std::fmt;
 
-use askama::filters::FastWritable;
-use askama::{Template, Values};
+use askama::{FastWritable, Template, Values};
 #[cfg(feature = "derive")]
 /// Implement the needed traits to use your template as a web response.
 ///
@@ -199,8 +198,11 @@ impl<T: Template> Template for WebTemplate<T> {
 
 impl<T: Template> FastWritable for WebTemplate<T> {
     #[inline]
-    fn write_into<W: fmt::Write + ?Sized>(&self, dest: &mut W) -> askama::Result<()> {
-        <T as FastWritable>::write_into(&self.0, dest)
+    fn write_into<W>(&self, dest: &mut W, values: &dyn Values) -> askama::Result<()>
+    where
+        W: fmt::Write + ?Sized,
+    {
+        <T as FastWritable>::write_into(&self.0, dest, values)
     }
 }
 
