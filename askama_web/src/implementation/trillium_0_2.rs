@@ -7,8 +7,8 @@ pub use std::primitive::str;
 pub use std::stringify;
 
 pub use askama::Template;
-use trillium_0_2::{Body, KnownHeaderName, Status};
 pub use trillium_0_2::{Conn, Handler};
+use trillium_0_2::{KnownHeaderName, Status};
 
 #[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_trillium_0_2 as derive;
@@ -101,20 +101,14 @@ pub fn render(
 
 #[must_use]
 async fn run(result: Option<String>, conn: Conn) -> Conn {
-    let (status, ct, body) = if let Some(body) = result {
-        (
-            Status::Ok,
-            "text/html; charset=utf-8",
-            Body::new_static(body.into_bytes()),
-        )
-    } else {
-        (
-            Status::InternalServerError,
-            "text/plain; charset=utf-8",
-            Body::new_static(b"INTERNAL SERVER ERROR"),
-        )
+    let (status, content_type, body) = match result {
+        Some(body) => (Status::Ok, super::HTML, Cow::Owned(body.into_bytes())),
+        None => (Status::InternalServerError, super::TEXT, FAIL),
     };
+
     conn.with_status(status)
-        .with_response_header(KnownHeaderName::ContentType, ct)
+        .with_response_header(KnownHeaderName::ContentType, content_type)
         .with_body(body)
 }
+
+const FAIL: Cow<'_, [u8]> = Cow::Borrowed(super::FAIL.as_bytes());

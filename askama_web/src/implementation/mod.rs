@@ -85,3 +85,12 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
     };
 }
+
+#[allow(unused)]
+const HTML: &str = "text/html; charset=utf-8";
+
+#[allow(unused)]
+const TEXT: &str = "text/plain; charset=utf-8";
+
+#[allow(unused)]
+const FAIL: &str = "INTERNAL SERVER ERROR";

@@ -1,5 +1,7 @@
 pub use askama::Template;
+use axum_core_0_4::body::Body;
 pub use axum_core_0_4::response::{IntoResponse, Response};
+use bytes_1::Bytes;
 use http_1::StatusCode;
 use http_1::header::{CONTENT_TYPE, HeaderValue};
 
@@ -47,16 +49,20 @@ impl<T: Template> IntoResponse for crate::WebTemplate<T> {
 
 #[track_caller]
 pub fn into_response(result: askama::Result<String>) -> Response {
-    match result {
-        Ok(body) => (HEADERS, body).into_response(),
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            StatusCode::INTERNAL_SERVER_ERROR.into_response()
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
-    }
+    };
+
+    let mut resp = Body::from(body).into_response();
+    *resp.status_mut() = status;
+    resp.headers_mut().insert(CONTENT_TYPE, content_type);
+    resp
 }
 
-const HEADERS: [(http_1::HeaderName, HeaderValue); 1] = [(
-    CONTENT_TYPE,
-    HeaderValue::from_static("text/html; charset=utf-8"),
-)];
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());

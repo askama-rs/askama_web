@@ -1,8 +1,10 @@
 pub use std::marker::Send;
 
 pub use askama::Template;
-use http_1::StatusCode;
+use bytes_1::Bytes;
 use http_1::header::{CONTENT_TYPE, HeaderValue};
+use http_1::{Extensions, HeaderMap, StatusCode, Version};
+use poem_3::{Body, ResponseParts};
 pub use poem_3::{IntoResponse, Response};
 
 #[cfg(feature = "derive")]
@@ -56,17 +58,24 @@ impl<T: Template + Send> IntoResponse for crate::WebTemplate<T> {
 
 #[track_caller]
 pub fn into_response(result: askama::Result<String>) -> Response {
-    match result {
-        Ok(body) => Response::builder()
-            .header(
-                CONTENT_TYPE,
-                HeaderValue::from_static("text/html; charset=utf-8"),
-            )
-            .status(StatusCode::OK)
-            .body(body),
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            StatusCode::INTERNAL_SERVER_ERROR.into_response()
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
-    }
+    };
+
+    let mut parts = ResponseParts {
+        status,
+        version: Version::default(),
+        headers: HeaderMap::with_capacity(1),
+        extensions: Extensions::default(),
+    };
+    parts.headers.insert(CONTENT_TYPE, content_type);
+    Response::from_parts(parts, Body::from_bytes(body))
 }
+
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());

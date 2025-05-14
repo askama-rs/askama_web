@@ -49,11 +49,11 @@ impl<T: Template> IntoResponse for crate::WebTemplate<T> {
 
 #[track_caller]
 pub fn into_response(result: askama::Result<String>) -> Response {
-    let (body, status, content_type) = match result {
-        Ok(body) => (Bytes::from(body), StatusCode::OK, HTML),
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            (FAIL, StatusCode::INTERNAL_SERVER_ERROR, TEXT)
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
     };
 
@@ -63,6 +63,6 @@ pub fn into_response(result: askama::Result<String>) -> Response {
     resp
 }
 
-const HTML: HeaderValue = HeaderValue::from_static("text/html; charset=utf-8");
-const TEXT: HeaderValue = HeaderValue::from_static("text/plain; charset=utf-8");
-const FAIL: Bytes = Bytes::from_static(b"INTERNAL SERVER ERROR");
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());
