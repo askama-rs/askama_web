@@ -7,6 +7,7 @@ members = [
     "test-axum-0.7",
     "test-axum-0.8",
     "test-axum-0.8-no-derive",
+    "test-cot-0.3",
     "test-poem-3",
     "test-rocket-0.5",
     "test-salvo-0.76",
@@ -19,7 +20,7 @@ members = [
 
 [workspace.dependencies]
 askama = { version = "0.14.0", default-features = false, features = ["std"] }
-askama_web = { path = "askama_web", version = "0.14.0", default-features = false }
+askama_web = { path = "askama_web", version = "0.14.1", default-features = false }
 
 [workspace.lints.rust]
 unknown_lints = { level = "allow", priority = -1 }

@@ -20,7 +20,7 @@ jobs:
           set -eu
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
             test-salvo-0.77 test-salvo-0.78 test-trillium-0.2 test-viz-0.10 test-warp-0.3 \
             test-axum-0.8-no-derive
           do
@@ -48,6 +48,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: EmbarkStudios/cargo-deny-action@v2
+        with:
+          manifest-path: ./askama_web/Cargo.toml
 
   Typos:
     runs-on: ubuntu-latest
@@ -84,7 +86,7 @@ jobs:
           cargo sort --grouped ./Cargo.toml
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
             test-salvo-0.77 test-salvo-0.78 test-trillium-0.2 test-viz-0.10 test-warp-0.3 \
             test-axum-0.8-no-derive
           do
@@ -100,7 +102,7 @@ jobs:
       matrix:
         package: [
             askama_web, askama_web_derive,
-            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-poem-3, test-rocket-0.5, test-salvo-0.76,
+            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-cot-0.3, test-poem-3, test-rocket-0.5, test-salvo-0.76,
             test-salvo-0.77, test-salvo-0.78, test-trillium-0.2, test-viz-0.10, test-warp-0.3,
             test-axum-0.8-no-derive,
         ]

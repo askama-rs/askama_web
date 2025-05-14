@@ -136,14 +136,14 @@ impl Parse for Params {
         let generics = if input.peek(Token![<]) {
             let _: Token![<] = input.parse()?;
 
-            let inner = if !input.peek(Token![>]) {
+            let inner = if input.peek(Token![>]) {
+                Punctuated::default()
+            } else {
                 let inner = <Punctuated<GenericParam, Token![,]>>::parse_separated_nonempty(input)?;
                 if input.peek(Token![,]) {
                     let _: Token![,] = input.parse()?;
                 }
                 inner
-            } else {
-                Default::default()
             };
 
             let _: Token![>] = input.parse()?;
