@@ -22,6 +22,8 @@ pub mod actix_web_4;
 pub mod axum_core_0_4;
 #[cfg(feature = "axum-core-0.5")]
 pub mod axum_core_0_5;
+#[cfg(feature = "cot-0.3")]
+pub mod cot_0_3;
 #[cfg(feature = "poem-3")]
 pub mod poem_3;
 #[cfg(feature = "rocket-0.5")]
@@ -45,6 +47,8 @@ pub use noop as actix_web_4;
 pub use noop as axum_core_0_4;
 #[cfg(all(feature = "derive", not(feature = "axum-core-0.5")))]
 pub use noop as axum_core_0_5;
+#[cfg(all(feature = "derive", not(feature = "cot-0.3")))]
+pub use noop as cot_0_3;
 #[cfg(all(feature = "derive", not(feature = "poem-3")))]
 pub use noop as poem_3;
 #[cfg(all(feature = "derive", not(feature = "rocket-0.5")))]
@@ -70,6 +74,7 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::actix_web_4::derive!(@ $ast);
         $crate::__askama_web_impl::axum_core_0_4::derive!(@ $ast);
         $crate::__askama_web_impl::axum_core_0_5::derive!(@ $ast);
+        $crate::__askama_web_impl::cot_0_3::derive!(@ $ast);
         $crate::__askama_web_impl::poem_3::derive!(@ $ast);
         $crate::__askama_web_impl::rocket_0_5::derive!(@ $ast);
         $crate::__askama_web_impl::salvo_core_0_76::derive!(@ $ast);

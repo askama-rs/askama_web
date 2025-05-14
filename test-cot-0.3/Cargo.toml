@@ -1,0 +1,11 @@
+[package]
+name = "test-cot-0_3"
+version = "0.12.0"
+edition = "2021"
+publish = false
+
+[dev-dependencies]
+askama = { workspace = true, features = ["derive"] }
+askama_web = { workspace = true, features = ["derive", "cot-0.3"] }
+
+cot = { version = "0.3.0", features = ["test"] }
