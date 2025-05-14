@@ -1,6 +1,7 @@
 pub use askama::Template;
+use bytes_1::Bytes;
 use http_1::StatusCode;
-use salvo_core_0_78::writing::Text;
+use http_1::header::{CONTENT_TYPE, HeaderValue};
 pub use salvo_core_0_78::{Response, Scribe};
 
 #[cfg(feature = "derive")]
@@ -47,11 +48,19 @@ impl<T: Template> Scribe for crate::WebTemplate<T> {
 
 #[track_caller]
 pub fn render(result: askama::Result<String>, res: &mut Response) {
-    match result {
-        Ok(body) => Text::Html(body).render(res),
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            StatusCode::INTERNAL_SERVER_ERROR.render(res)
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
-    }
+    };
+
+    res.status_code(status);
+    res.headers_mut().insert(CONTENT_TYPE, content_type);
+    let _ = res.write_body(body);
 }
+
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());

@@ -1,9 +1,9 @@
-use actix_web_4::HttpResponseBuilder;
 pub use actix_web_4::body::BoxBody;
 use actix_web_4::http::StatusCode;
-use actix_web_4::http::header::HeaderValue;
+use actix_web_4::http::header::{CONTENT_TYPE, HeaderValue};
 pub use actix_web_4::{HttpRequest, HttpResponse, Responder};
 pub use askama::Template;
+use bytes_1::Bytes;
 
 #[cfg(feature = "derive")]
 pub use crate::__askama_web_impl_actix_web_4 as derive;
@@ -34,10 +34,10 @@ macro_rules! __askama_web_impl_actix_web_4 {
                 #[track_caller]
                 fn respond_to(
                     self,
-                    req: &__askama_web::HttpRequest,
+                    _: &__askama_web::HttpRequest,
                 ) -> __askama_web::HttpResponse<Self::Body> {
                     let result = <Self as __askama_web::Template>::render(&self);
-                    __askama_web::respond_to(result, req)
+                    __askama_web::respond_to(result)
                 }
             }
         };
@@ -49,24 +49,26 @@ impl<T: Template> Responder for crate::WebTemplate<T> {
 
     #[inline]
     #[track_caller]
-    fn respond_to(self, req: &HttpRequest) -> HttpResponse<Self::Body> {
-        respond_to(T::render(&self.0), req)
+    fn respond_to(self, _: &HttpRequest) -> HttpResponse<Self::Body> {
+        respond_to(T::render(&self.0))
     }
 }
 
 #[track_caller]
-pub fn respond_to(result: askama::Result<String>, req: &HttpRequest) -> HttpResponse {
-    match result {
-        Ok(body) => HttpResponseBuilder::new(StatusCode::OK)
-            .content_type(HeaderValue::from_static("text/html; charset=utf-8"))
-            .body(body)
-            .respond_to(req),
+pub fn respond_to(result: askama::Result<String>) -> HttpResponse {
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            HttpResponseBuilder::new(StatusCode::INTERNAL_SERVER_ERROR)
-                .content_type(HeaderValue::from_static("text/plain; charset=utf-8"))
-                .body("INTERNAL SERVER ERROR")
-                .respond_to(req)
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
-    }
+    };
+
+    let mut resp = HttpResponse::new(status);
+    resp.headers_mut().insert(CONTENT_TYPE, content_type);
+    resp.set_body(BoxBody::new(body))
 }
+
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());

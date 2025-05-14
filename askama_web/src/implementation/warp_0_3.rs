@@ -1,8 +1,9 @@
 pub use std::marker::Send;
 
 pub use askama::Template;
-use http_0_2::StatusCode;
-use warp_0_3::reply::html;
+use bytes_1::Bytes;
+use http_0_2::header::CONTENT_TYPE;
+use http_0_2::{HeaderValue, StatusCode};
 pub use warp_0_3::reply::{Reply, Response};
 
 #[cfg(feature = "derive")]
@@ -56,11 +57,20 @@ impl<T: Template + Send> Reply for crate::WebTemplate<T> {
 
 #[track_caller]
 pub fn into_response(result: askama::Result<String>) -> Response {
-    match result {
-        Ok(body) => html(body).into_response(),
+    let (status, content_type, body) = match result {
+        Ok(body) => (StatusCode::OK, HTML, Bytes::from_owner(body)),
         Err(err) => {
             crate::render_error(&err);
-            StatusCode::INTERNAL_SERVER_ERROR.into_response()
+            (StatusCode::INTERNAL_SERVER_ERROR, TEXT, FAIL)
         }
-    }
+    };
+
+    let mut resp = Response::new(body.into());
+    *resp.status_mut() = status;
+    resp.headers_mut().insert(CONTENT_TYPE, content_type);
+    resp
 }
+
+const HTML: HeaderValue = HeaderValue::from_static(super::HTML);
+const TEXT: HeaderValue = HeaderValue::from_static(super::TEXT);
+const FAIL: Bytes = Bytes::from_static(super::FAIL.as_bytes());

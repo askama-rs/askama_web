@@ -29,3 +29,28 @@ async fn hello_warp_0_3() {
     );
     assert_eq!(&**resp.body(), b"Hello, world!");
 }
+
+fn fail() -> impl Reply {
+    HelloTemplate { name: &Fail }
+}
+
+#[derive(Debug, Clone, Copy)]
+struct Fail;
+
+impl Display for Fail {
+    fn fmt(&self, _: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        Err(std::fmt::Error)
+    }
+}
+
+#[tokio::test]
+async fn fail_warp_0_3() {
+    let routes = warp::get().and(warp::path!().map(fail));
+    let resp = warp::test::request().reply(&routes).await;
+    assert_eq!(resp.status(), 500);
+    assert_eq!(
+        resp.headers().get("content-type").unwrap(),
+        "text/plain; charset=utf-8"
+    );
+    assert_eq!(&**resp.body(), b"INTERNAL SERVER ERROR");
+}

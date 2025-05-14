@@ -47,7 +47,7 @@ impl Project for HelloProject {
 }
 
 #[cot::test]
-async fn hello_warp_0_3() {
+async fn hello_cot_0_3() {
     let mut client = Client::new(HelloProject).await;
     let resp = client.get("/").await.unwrap();
     assert_eq!(resp.status(), 200);
@@ -57,4 +57,54 @@ async fn hello_warp_0_3() {
     );
     let body = resp.into_body().into_bytes().await.unwrap();
     assert_eq!(&body[..], b"Hello, world!");
+}
+
+async fn fail() -> impl IntoResponse {
+    HelloTemplate { name: &Fail }
+}
+
+#[derive(Debug, Clone, Copy)]
+struct Fail;
+
+impl Display for Fail {
+    fn fmt(&self, _: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        Err(std::fmt::Error)
+    }
+}
+
+struct FailApp;
+
+impl App for FailApp {
+    fn name(&self) -> &'static str {
+        "fail-app"
+    }
+
+    fn router(&self) -> Router {
+        Router::with_urls([Route::with_handler("/", fail)])
+    }
+}
+
+struct FailProject;
+
+impl Project for FailProject {
+    fn config(&self, _config_name: &str) -> cot::Result<ProjectConfig> {
+        Ok(ProjectConfig::dev_default())
+    }
+
+    fn register_apps(&self, apps: &mut AppBuilder, _context: &RegisterAppsContext) {
+        apps.register_with_views(FailApp, "");
+    }
+}
+
+#[cot::test]
+async fn fail_cot_0_3() {
+    let mut client = Client::new(FailProject).await;
+    let resp = client.get("/").await.unwrap();
+    assert_eq!(resp.status(), 500);
+    assert_eq!(
+        resp.headers().get("content-type").unwrap(),
+        "text/plain; charset=utf-8"
+    );
+    let body = resp.into_body().into_bytes().await.unwrap();
+    assert_eq!(&body[..], b"INTERNAL SERVER ERROR");
 }
