@@ -20,10 +20,11 @@ macro_rules! __askama_web_impl_trillium_0_2 {
     (@ $ast:tt) => {
         $crate::__askama_web_impl::askama_web_derive::impl_framework! {
             $crate::__askama_web_impl::trillium_0_2::derive!(
-                $ast where Self:
-                    $crate::__askama_web_impl::trillium_0_2::Send +
-                    $crate::__askama_web_impl::trillium_0_2::Sync +
-                    'static
+                $ast
+                where
+                    Self: $crate::__askama_web_impl::trillium_0_2::Send
+                        + $crate::__askama_web_impl::trillium_0_2::Sync
+                        + 'static
             );
         }
     };
@@ -101,8 +102,8 @@ pub fn render(
 #[must_use]
 async fn run(result: Option<String>, conn: Conn) -> Conn {
     let (status, content_type, body) = match result {
-        Some(body) => (Status::Ok, super::HTML, Cow::Owned(body.into_bytes())),
-        None => (Status::InternalServerError, super::TEXT, FAIL),
+        Some(body) => (Status::Ok, HTML, Cow::Owned(body.into_bytes())),
+        None => (Status::InternalServerError, TEXT, FAIL),
     };
 
     conn.with_status(status)
@@ -110,4 +111,6 @@ async fn run(result: Option<String>, conn: Conn) -> Conn {
         .with_body(body)
 }
 
+const HTML: &str = super::HTML;
+const TEXT: &str = super::TEXT;
 const FAIL: Cow<'_, [u8]> = Cow::Borrowed(super::FAIL.as_bytes());
