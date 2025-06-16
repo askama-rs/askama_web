@@ -21,7 +21,7 @@ askama_web_derive = { version = "0.1.0", path = "../askama_web_derive", optional
 actix_web_4 = { package = "actix-web", version = "4.0.0", optional = true, default-features = false }
 axum_core_0_4 = { package = "axum-core", version = "0.4.0", optional = true, default-features = false }
 axum_core_0_5 = { package = "axum-core", version = "0.5.0", optional = true, default-features = false }
-bytes_1 = { package = "bytes", version = "1.0.0", optional = true, default-features = false }
+bytes_1 = { package = "bytes", version = "1.10.1", optional = true, default-features = false }
 cot_0_3 = { package = "cot", version = "0.3.0", optional = true, default-features = false }
 http_0_2 = { package = "http", version = "0.2.0", optional = true, default-features = false }
 http_1 = { package = "http", version = "1.0.0", optional = true, default-features = false }
