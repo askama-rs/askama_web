@@ -75,4 +75,4 @@ pub fn respond_to(result: askama::Result<String>) -> Response<'static> {
 
 const HTML: ContentType = ContentType(MediaType::HTML);
 const TEXT: ContentType = ContentType(MediaType::Text);
-const FAIL: Cow<'_, [u8]> = Cow::Borrowed(b"INTERNAL SERVER ERROR");
+const FAIL: Cow<'_, [u8]> = Cow::Borrowed(super::FAIL.as_bytes());
