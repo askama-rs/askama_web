@@ -21,7 +21,7 @@ members = [
 
 [workspace.dependencies]
 askama = { version = "0.14.0", default-features = false, features = ["std"] }
-askama_web = { path = "askama_web", version = "0.14.3", default-features = false }
+askama_web = { path = "askama_web", version = "0.14.4", default-features = false }
 
 [workspace.lints.rust]
 unknown_lints = { level = "allow", priority = -1 }
