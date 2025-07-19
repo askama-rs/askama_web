@@ -14,6 +14,8 @@ members = [
     "test-salvo-0.77",
     "test-salvo-0.78",
     "test-salvo-0.79",
+    "test-salvo-0.80",
+    "test-salvo-0.81",
     "test-trillium-0.2",
     "test-viz-0.10",
     "test-warp-0.3",
@@ -21,7 +23,7 @@ members = [
 
 [workspace.dependencies]
 askama = { version = "0.14.0", default-features = false, features = ["std"] }
-askama_web = { path = "askama_web", version = "0.14.4", default-features = false }
+askama_web = { path = "askama_web", version = "0.14.5", default-features = false }
 
 [workspace.lints.rust]
 unknown_lints = { level = "allow", priority = -1 }

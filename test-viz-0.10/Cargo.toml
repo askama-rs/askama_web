@@ -1,6 +1,6 @@
 [package]
 name = "test-viz-0_10"
-version = "0.12.0"
+version = "0.1.0"
 edition = "2021"
 publish = false
 
