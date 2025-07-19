@@ -20,9 +20,9 @@ jobs:
           set -eu
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
-            test-salvo-0.77 test-salvo-0.78 test-trillium-0.2 test-viz-0.10 test-warp-0.3 \
-            test-axum-0.8-no-derive
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 \
+            test-salvo-0.76 test-salvo-0.77 test-salvo-0.78 test-salvo-0.79 test-salvo-0.80 test-salvo-0.81 \
+            test-trillium-0.2 test-viz-0.10 test-warp-0.3 test-axum-0.8-no-derive
           do
             cd "$PKG"
             echo "Testing: $PKG"
@@ -86,9 +86,9 @@ jobs:
           cargo sort --grouped ./Cargo.toml
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 test-salvo-0.76 \
-            test-salvo-0.77 test-salvo-0.78 test-trillium-0.2 test-viz-0.10 test-warp-0.3 \
-            test-axum-0.8-no-derive
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 \
+            test-salvo-0.76 test-salvo-0.77 test-salvo-0.78 test-salvo-0.79 test-salvo-0.80 test-salvo-0.81 \
+            test-trillium-0.2 test-viz-0.10 test-warp-0.3 test-axum-0.8-no-derive
           do
             cd "$PKG"
             cargo sort --grouped ./Cargo.toml
@@ -102,9 +102,9 @@ jobs:
       matrix:
         package: [
             askama_web, askama_web_derive,
-            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-cot-0.3, test-poem-3, test-rocket-0.5, test-salvo-0.76,
-            test-salvo-0.77, test-salvo-0.78, test-trillium-0.2, test-viz-0.10, test-warp-0.3,
-            test-axum-0.8-no-derive,
+            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-cot-0.3, test-poem-3, test-rocket-0.5,
+            test-salvo-0.76, test-salvo-0.77, test-salvo-0.78, test-salvo-0.79, test-salvo-0.80, test-salvo-0.81,
+            test-trillium-0.2, test-viz-0.10, test-warp-0.3, test-axum-0.8-no-derive,
         ]
     runs-on: ubuntu-latest
     steps:
