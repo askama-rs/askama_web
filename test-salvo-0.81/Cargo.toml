@@ -1,12 +1,12 @@
 [package]
-name = "test-warp-0_3"
+name = "test-salvo-0_81"
 version = "0.1.0"
 edition = "2021"
 publish = false
 
 [dev-dependencies]
 askama = { workspace = true, features = ["derive"] }
-askama_web = { workspace = true, features = ["derive", "warp-0.3"] }
+askama_web = { workspace = true, features = ["derive", "salvo-0.81"] }
 
+salvo = { version = "0.81.0", default-features = false, features = ["test"] }
 tokio = { version = "1.44.2", features = ["macros", "rt"] }
-warp = { version = "0.3.7", default-features = false }
