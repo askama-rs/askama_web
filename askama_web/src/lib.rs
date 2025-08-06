@@ -76,8 +76,8 @@
 //! * `"viz-0.10"` / `"viz_core-0.10"`: implements [`IntoResponse`][viz_core_0_10::IntoResponse]
 //!   for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
 //!   [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
-//! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
-//!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
+//! * `"warp-0.4"`: implements [`Reply`][warp_0_4::reply::Reply] for
+//!   [warp](https://docs.rs/warp/0.4.x/) in version 0.4
 //!
 //! As well as these logging / debugging facilities to print error messages
 //! if a template could not be rendered:
@@ -93,6 +93,8 @@
 //!   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
 //! * `"salvo-0.76"` – `"salvo-0.80"` / `"salvo_core-0.76"` – `"salvo-0.80"`:
 //!   older [Salvo](https://salvo.rs/) versions
+//! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
+//!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 
 #![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
 
