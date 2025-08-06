@@ -70,8 +70,8 @@ and can be selected with their respective feature flag:
 * `"viz-0.10"` / `"viz-core-0.10"`: implements [`IntoResponse`](https://docs.rs/viz/0.10.0/viz/trait.IntoResponse.html)
   for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
   [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
-* `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
-  [warp](https://docs.rs/warp/0.3.x/) in version 0.3
+* `"warp-0.4"`: implements [`Reply`](https://docs.rs/warp/0.4.x/warp/reply/trait.Reply.html) for
+  [warp](https://docs.rs/warp/0.4.x/) in version 0.4
 
 As well as these logging / debugging facilities to print error messages
 if a template could not be rendered:
@@ -87,6 +87,8 @@ Some older versions are implemented, too:
   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
 * `"salvo-0.76"` – `"salvo-0.80"` / `"salvo_core-0.76"` – `"salvo-0.80"`:
   older [Salvo](https://salvo.rs/) versions
+* `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
+  [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 
 ## License
 
