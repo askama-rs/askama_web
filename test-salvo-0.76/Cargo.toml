@@ -8,5 +8,5 @@ publish = false
 askama = { workspace = true, features = ["derive"] }
 askama_web = { workspace = true, features = ["derive", "salvo-0.76"] }
 
-salvo = { version = "0.76.2", default-features = false, features = ["test"] }
+salvo = { version = "0.82.0", default-features = false, features = ["test"] }
 tokio = { version = "1.44.2", features = ["macros", "rt"] }
