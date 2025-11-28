@@ -96,7 +96,7 @@
 //! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 
-#![cfg_attr(docsrs, feature(doc_cfg, doc_auto_cfg))]
+#![cfg_attr(docsrs, feature(doc_cfg))]
 
 #[doc(hidden)]
 mod implementation;
