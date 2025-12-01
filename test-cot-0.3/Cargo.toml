@@ -8,4 +8,4 @@ publish = false
 askama = { workspace = true, features = ["derive"] }
 askama_web = { workspace = true, features = ["derive", "cot-0.3"] }
 
-cot = { version = "0.3.0", features = ["test"] }
+cot = { version = "0.4.0", features = ["test"] }

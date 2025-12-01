@@ -9,5 +9,5 @@ askama = { workspace = true, features = ["derive"] }
 askama_web = { workspace = true, features = ["derive", "viz-0.10"] }
 
 tokio = { version = "1.44.2", features = ["macros", "rt"] }
-viz = { version = "0.10.0", features = ["macros"] }
+viz = { version = "0.11.0", features = ["macros"] }
 viz-test = "0.4.0"
