@@ -21,6 +21,12 @@ members = [
     "test-warp-0.3",
     "test-warp-0.4",
 ]
+exclude = [
+    # test-pavex-0.2 excluded due to matchit version conflict with axum/cot
+    # pavex requires matchit >=0.8.6, but axum 0.8.x pins matchit =0.8.4
+    # Can be tested standalone or when upstream deps resolve conflict
+    "test-pavex-0.2",
+]
 
 [workspace.dependencies]
 askama = { version = "0.14.0", default-features = false, features = ["std"] }

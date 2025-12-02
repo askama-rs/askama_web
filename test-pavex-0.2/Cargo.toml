@@ -1,0 +1,9 @@
+[package]
+name = "test-pavex-0_2"
+edition = "2021"
+publish = false
+
+[dependencies]
+askama = "0.14"
+askama_web = { path = "../askama_web", features = ["pavex-0.2"] }
+pavex = "0.2"

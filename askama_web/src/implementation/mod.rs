@@ -48,6 +48,8 @@ pub mod viz_core_0_10;
 pub mod warp_0_3;
 #[cfg(feature = "warp-0.4")]
 pub mod warp_0_4;
+#[cfg(feature = "pavex-0.2")]
+pub mod pavex_0_2;
 
 #[cfg(all(feature = "derive", not(feature = "actix-web-4")))]
 pub use noop as actix_web_4;
@@ -81,6 +83,8 @@ pub use noop as viz_core_0_10;
 pub use noop as warp_0_3;
 #[cfg(all(feature = "derive", not(feature = "warp-0.4")))]
 pub use noop as warp_0_4;
+#[cfg(all(feature = "derive", not(feature = "pavex-0.2")))]
+pub use noop as pavex_0_2;
 
 #[cfg(feature = "derive")]
 #[macro_export]
@@ -103,6 +107,7 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::viz_core_0_10::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_4::derive!(@ $ast);
+        $crate::__askama_web_impl::pavex_0_2::derive!(@ $ast);
     };
 }
 

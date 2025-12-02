@@ -72,6 +72,8 @@ and can be selected with their respective feature flag:
   [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
 * `"warp-0.4"`: implements [`Reply`](https://docs.rs/warp/0.4.x/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.4.x/) in version 0.4
+* `"pavex-0.2"`: implements [`IntoResponse`](https://pavex.dev/docs/api_reference/pavex/response/trait.IntoResponse)
+  for [pavex](https://pavex.dev/) in version 0.2
 
 As well as these logging / debugging facilities to print error messages
 if a template could not be rendered:
