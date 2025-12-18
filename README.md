@@ -64,9 +64,6 @@ and can be selected with their respective feature flag:
   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
 * `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
-* `"viz-0.10"` / `"viz-core-0.10"`: implements [`IntoResponse`](https://docs.rs/viz/0.10.0/viz/trait.IntoResponse.html)
-  for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
-  [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
 * `"warp-0.4"`: implements [`Reply`](https://docs.rs/warp/0.4.x/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.4.x/) in version 0.4
 
