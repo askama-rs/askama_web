@@ -62,8 +62,8 @@
 //! * `"axum-0.8"` / `"axum-core-0.5"`: implements [`IntoResponse`][axum_core_0_5::response::IntoResponse]
 //!   for [axum](https://docs.rs/axum/0.8.x/) in version 0.8 /
 //!   [axum-core](https://docs.rs/axum-core/0.5.x/) in version 0.5
-//! * `"cot-0.3"`: implements [`IntoResponse`][cot_0_3::response::IntoResponse] for
-//!   [cot](https://docs.rs/cot/0.3.x/) in version 0.3
+//! * `"cot-0.4"`: implements [`IntoResponse`][cot_0_4::response::IntoResponse] for
+//!   [cot](https://docs.rs/cot/0.4.x/) in version 0.4
 //! * `"poem-3"`: implements [`IntoResponse`][poem_3::web::IntoResponse] for
 //!   [poem](https://docs.rs/poem/3.x.x/) in version 3.x
 //! * `"rocket-0.5"`: implements [`Responder`][rocket_0_5::response::Responder] for
@@ -85,6 +85,8 @@
 //! * `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.5/axum_core/response/trait.IntoResponse.html)
 //!   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
 //!   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
+//! * `"cot-0.3"`: implements [`IntoResponse`][cot_0_3::response::IntoResponse] for
+//!   [cot](https://docs.rs/cot/0.3.x/) in version 0.3
 //! * `"warp-0.3"`: implements [`Reply`][warp_0_3::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 

@@ -8,6 +8,7 @@ members = [
     "test-axum-0.8",
     "test-axum-0.8-no-derive",
     "test-cot-0.3",
+    "test-cot-0.4",
     "test-poem-3",
     "test-rocket-0.5",
     "test-trillium-0.2",

@@ -20,7 +20,7 @@ jobs:
           set -eu
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 \
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-cot-0.3 test-poem-3 test-rocket-0.5 \
             test-trillium-0.2 test-warp-0.3 test-warp-0.4 test-axum-0.8-no-derive
           do
             cd "$PKG"
@@ -85,7 +85,7 @@ jobs:
           cargo sort --grouped ./Cargo.toml
           for PKG in \
             askama_web askama_web_derive \
-            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-poem-3 test-rocket-0.5 \
+            test-actix-web-4 test-axum-0.7 test-axum-0.8 test-cot-0.3 test-cot-0.4 test-poem-3 test-rocket-0.5 \
             test-trillium-0.2 test-warp-0.3 test-warp-0.4 test-axum-0.8-no-derive
           do
             cd "$PKG"
@@ -100,7 +100,7 @@ jobs:
       matrix:
         package: [
             askama_web, askama_web_derive,
-            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-cot-0.3, test-poem-3, test-rocket-0.5,
+            test-actix-web-4, test-axum-0.7, test-axum-0.8, test-cot-0.3, test-cot-0.4, test-poem-3, test-rocket-0.5,
             test-trillium-0.2, test-warp-0.3, test-warp-0.4, test-axum-0.8-no-derive,
         ]
     runs-on: ubuntu-latest
