@@ -70,9 +70,6 @@
 //!   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
 //! * `"trillium-0.2"`: implements [`Handler`][trillium_0_2::Handler] for
 //!   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
-//! * `"viz-0.10"` / `"viz_core-0.10"`: implements [`IntoResponse`][viz_core_0_10::IntoResponse]
-//!   for [viz](https://docs.rs/viz/0.10.x/) in version 0.10 /
-//!   [viz-core](https://docs.rs/viz-core/0.10.x/) in version 0.10
 //! * `"warp-0.4"`: implements [`Reply`][warp_0_4::reply::Reply] for
 //!   [warp](https://docs.rs/warp/0.4.x/) in version 0.4
 //!
