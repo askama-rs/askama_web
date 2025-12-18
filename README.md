@@ -62,9 +62,6 @@ and can be selected with their respective feature flag:
   [poem](https://docs.rs/poem/3.x.x/) in version 3.x
 * `"rocket-0.5"`: implements [`Responder`](https://docs.rs/rocket/0.5.1/rocket/response/trait.Responder.html) for
   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
-* `"salvo-0.81"` / `"salvo_core-0.81"`: implements [`Scribe`](https://docs.rs/salvo/0.81.0/salvo/trait.Scribe.html)
-  for [salvo](https://docs.rs/salvo/0.81.x/) in version 0.81 /
-  [salvo_core](https://docs.rs/salvo_core/0.81.x/) in version 0.81
 * `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
   [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
 * `"viz-0.10"` / `"viz-core-0.10"`: implements [`IntoResponse`](https://docs.rs/viz/0.10.0/viz/trait.IntoResponse.html)
@@ -85,8 +82,6 @@ Some older versions are implemented, too:
 * `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.x/axum_core/response/trait.IntoResponse.html)
   for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
-* `"salvo-0.76"` – `"salvo-0.80"` / `"salvo_core-0.76"` – `"salvo-0.80"`:
-  older [Salvo](https://salvo.rs/) versions
 * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 
