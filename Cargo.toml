@@ -1,5 +1,5 @@
 [workspace]
-resolver = "2"
+resolver = "3"
 members = [
     "askama_web",
     "askama_web_derive",
@@ -17,8 +17,8 @@ members = [
 ]
 
 [workspace.dependencies]
-askama = { version = "0.14.0", default-features = false, features = ["std"] }
-askama_web = { path = "askama_web", version = "0.14.6", default-features = false }
+askama = { version = "0.15.0", default-features = false, features = ["std"] }
+askama_web = { path = "askama_web", version = "0.15.0", default-features = false }
 
 [workspace.lints.rust]
 unknown_lints = { level = "allow", priority = -1 }

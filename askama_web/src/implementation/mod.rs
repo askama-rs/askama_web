@@ -30,22 +30,8 @@ pub mod cot_0_4;
 pub mod poem_3;
 #[cfg(feature = "rocket-0.5")]
 pub mod rocket_0_5;
-#[cfg(feature = "salvo_core-0.76")]
-pub mod salvo_core_0_76;
-#[cfg(feature = "salvo_core-0.77")]
-pub mod salvo_core_0_77;
-#[cfg(feature = "salvo_core-0.78")]
-pub mod salvo_core_0_78;
-#[cfg(feature = "salvo_core-0.79")]
-pub mod salvo_core_0_79;
-#[cfg(feature = "salvo_core-0.80")]
-pub mod salvo_core_0_80;
-#[cfg(feature = "salvo_core-0.81")]
-pub mod salvo_core_0_81;
 #[cfg(feature = "trillium-0.2")]
 pub mod trillium_0_2;
-#[cfg(feature = "viz-core-0.10")]
-pub mod viz_core_0_10;
 #[cfg(feature = "warp-0.3")]
 pub mod warp_0_3;
 #[cfg(feature = "warp-0.4")]
@@ -65,22 +51,8 @@ pub use noop as cot_0_4;
 pub use noop as poem_3;
 #[cfg(all(feature = "derive", not(feature = "rocket-0.5")))]
 pub use noop as rocket_0_5;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.76")))]
-pub use noop as salvo_core_0_76;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.77")))]
-pub use noop as salvo_core_0_77;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.78")))]
-pub use noop as salvo_core_0_78;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.79")))]
-pub use noop as salvo_core_0_79;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.80")))]
-pub use noop as salvo_core_0_80;
-#[cfg(all(feature = "derive", not(feature = "salvo_core-0.81")))]
-pub use noop as salvo_core_0_81;
 #[cfg(all(feature = "derive", not(feature = "trillium-0.2")))]
 pub use noop as trillium_0_2;
-#[cfg(all(feature = "derive", not(feature = "viz-core-0.10")))]
-pub use noop as viz_core_0_10;
 #[cfg(all(feature = "derive", not(feature = "warp-0.3")))]
 pub use noop as warp_0_3;
 #[cfg(all(feature = "derive", not(feature = "warp-0.4")))]
@@ -98,14 +70,7 @@ macro_rules! __askama_web_impl {
         $crate::__askama_web_impl::cot_0_4::derive!(@ $ast);
         $crate::__askama_web_impl::poem_3::derive!(@ $ast);
         $crate::__askama_web_impl::rocket_0_5::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_76::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_77::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_78::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_79::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_80::derive!(@ $ast);
-        $crate::__askama_web_impl::salvo_core_0_81::derive!(@ $ast);
         $crate::__askama_web_impl::trillium_0_2::derive!(@ $ast);
-        $crate::__askama_web_impl::viz_core_0_10::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_3::derive!(@ $ast);
         $crate::__askama_web_impl::warp_0_4::derive!(@ $ast);
     };
