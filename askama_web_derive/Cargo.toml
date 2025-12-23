@@ -1,11 +1,11 @@
 [package]
 name = "askama_web_derive"
-version = "0.1.0"
-edition = "2021"
+version = "0.2.0"
+edition = "2024"
 homepage = "https://askama.readthedocs.io/"
 repository = "https://github.com/rinja-rs/askama_web/"
 license = "MIT OR Apache-2.0"
-rust-version = "1.83"
+rust-version = "1.88"
 description = "Proc-macros used by `askama_web`"
 keywords = []
 categories = []
