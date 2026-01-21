@@ -56,10 +56,10 @@ and can be selected with their respective feature flag:
 * `"axum-0.8"` / `"axum-core-0.5"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.5.0/axum_core/response/trait.IntoResponse.html)
   for [axum](https://docs.rs/axum/0.8.x/) in version 0.8 /
   [axum-core](https://docs.rs/axum-core/0.5.x/) in version 0.5
-* `"cot-0.4"`: implements [`IntoResponse`](https://docs.rs/cot/0.4.0/cot/response/trait.IntoResponse.html) for
-  [cot](https://docs.rs/cot/0.4.x/) in version 0.4
+* `"cot-0.5"`: implements [`IntoResponse`](https://docs.rs/cot/0.5.0/cot/response/trait.IntoResponse.html) for
+  [cot](https://docs.rs/cot/0.5.x/) in version 0.4
 * `"poem-3"`: implements [`IntoResponse`](https://docs.rs/poem/3.1.7/poem/web/trait.IntoResponse.html) for
-  [poem](https://docs.rs/poem/3.x.x/) in version 3.x
+  [poem](https://docs.rs/poem/3.x.x/) in version 3
 * `"rocket-0.5"`: implements [`Responder`](https://docs.rs/rocket/0.5.1/rocket/response/trait.Responder.html) for
   [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
 * `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
@@ -81,6 +81,8 @@ Some older versions are implemented, too:
   [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
 * `"cot-0.3"`: implements [`IntoResponse`](https://docs.rs/cot/0.3.0/cot/response/trait.IntoResponse.html) for
   [cot](https://docs.rs/cot/0.3.x/) in version 0.3
+* `"cot-0.4"`: implements [`IntoResponse`](https://docs.rs/cot/0.4.0/cot/response/trait.IntoResponse.html) for
+  [cot](https://docs.rs/cot/0.4.x/) in version 0.4
 * `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
   [warp](https://docs.rs/warp/0.3.x/) in version 0.3
 
