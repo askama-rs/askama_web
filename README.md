@@ -51,47 +51,41 @@ response with the rendered struct as body.
 These web frameworks are currently implemented
 and can be selected with their respective feature flag:
 
-* `"actix-web-4"`: implements [`Responder`](https://docs.rs/actix-web/4.9.0/actix_web/trait.Responder.html)
-  for [actix-web](https://docs.rs/actix-web/4.x.x/) in version 4
-* `"axum-0.8"` / `"axum-core-0.5"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.5.0/axum_core/response/trait.IntoResponse.html)
-  for [axum](https://docs.rs/axum/0.8.x/) in version 0.8 /
-  [axum-core](https://docs.rs/axum-core/0.5.x/) in version 0.5
-* `"cot-0.5"`: implements [`IntoResponse`](https://docs.rs/cot/0.5.0/cot/response/trait.IntoResponse.html) for
-  [cot](https://docs.rs/cot/0.5.x/) in version 0.4
-* `"poem-3"`: implements [`IntoResponse`](https://docs.rs/poem/3.1.7/poem/web/trait.IntoResponse.html) for
-  [poem](https://docs.rs/poem/3.x.x/) in version 3
-* `"rocket-0.5"`: implements [`Responder`](https://docs.rs/rocket/0.5.1/rocket/response/trait.Responder.html) for
-  [rocket](https://docs.rs/rocket/0.5.x/) in version 0.5
-* `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2.20/trillium/trait.Handler.html) for
-  [trillium](https://docs.rs/trillium/0.2.x/) in version 0.2
-* `"warp-0.4"`: implements [`Reply`](https://docs.rs/warp/0.4.x/warp/reply/trait.Reply.html) for
-  [warp](https://docs.rs/warp/0.4.x/) in version 0.4
+* `"actix-web-4"`: implements [`Responder`](https://docs.rs/actix-web/4/actix_web/trait.Responder.html)
+  for [**actix-web**](https://docs.rs/actix-web/4/) in version 4
+* `"axum-0.8"` / `"axum-core-0.5"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.5/axum_core/response/trait.IntoResponse.html)
+  for [**axum**](https://docs.rs/axum/0.8/) in version 0.8 /
+  [**axum-core**](https://docs.rs/axum-core/0.5/) in version 0.5
+* `"cot-0.6"` / `"cot_core-0.6"`: implements [`IntoResponse`](https://docs.rs/cot_core/0.6/cot_core/response/trait.IntoResponse.html)
+  for [**cot**](https://docs.rs/cot/0.6/) / [**cot_core**](https://docs.rs/cot_core/0.6/) in version 0.6
+* `"poem-3"`: implements [`IntoResponse`](https://docs.rs/poem/3/poem/web/trait.IntoResponse.html) for
+  [**poem**](https://docs.rs/poem/3/) in version 3
+* `"rocket-0.5"`: implements [`Responder`](https://docs.rs/rocket/0.5/rocket/response/trait.Responder.html) for
+  [**rocket**](https://docs.rs/rocket/0.5/) in version 0.5
+* `"trillium-0.2"`: implements [`Handler`](https://docs.rs/trillium/0.2/trillium/trait.Handler.html) for
+  [**trillium**](https://docs.rs/trillium/0.2/) in version 0.2
+* `"warp-0.4"`: implements [`Reply`](https://docs.rs/warp/0.4/warp/reply/trait.Reply.html) for
+  [**warp**](https://docs.rs/warp/0.4/) in version 0.4
 
 As well as these logging / debugging facilities to print error messages
 if a template could not be rendered:
 
 * `"eprintln"`: using rust's built-in `eprintln!()` macro
-* `"log-0.4"`: using [log](https://docs.rs/log/0.4.x/) as logging framework
-* `"tracing-0.1"`: using [tracing](https://docs.rs/tracing/0.1.x/) as logging framework
+* `"log-0.4"`: using [**log**](https://docs.rs/log/0.4/) as logging framework
+* `"tracing-0.1"`: using [**tracing**](https://docs.rs/tracing/0.1/) as logging framework
 
 Some older versions are implemented, too:
 
-* `"axum-0.7"` / `"axum-core-0.4"`: implements [`IntoResponse`](https://docs.rs/axum-core/0.4.x/axum_core/response/trait.IntoResponse.html)
-  for [axum](https://docs.rs/axum/0.7.x/) in version 0.7 /
-  [axum-core](https://docs.rs/axum-core/0.4.x/) in version 0.4
-* `"cot-0.3"`: implements [`IntoResponse`](https://docs.rs/cot/0.3.0/cot/response/trait.IntoResponse.html) for
-  [cot](https://docs.rs/cot/0.3.x/) in version 0.3
-* `"cot-0.4"`: implements [`IntoResponse`](https://docs.rs/cot/0.4.0/cot/response/trait.IntoResponse.html) for
-  [cot](https://docs.rs/cot/0.4.x/) in version 0.4
-* `"warp-0.3"`: implements [`Reply`](https://docs.rs/warp/0.3.7/warp/reply/trait.Reply.html) for
-  [warp](https://docs.rs/warp/0.3.x/) in version 0.3
+* `"axum-0.7"` / `"axum-core-0.4"`
+* `"cot-0.3"`, `"cot-0.4"`, `"cot-0.5"`
+* `"warp-0.3"`
 
 ## License
 
 Licensed under either of
 
-* Apache License, Version 2.0, ([LICENSE-APACHE](LICENSE-APACHE) or https://www.apache.org/licenses/LICENSE-2.0)
-* MIT license ([LICENSE-MIT](LICENSE-MIT) or https://opensource.org/licenses/MIT)
+* Apache License, Version 2.0, ([LICENSE-APACHE](https://www.apache.org/licenses/LICENSE-2.0))
+* MIT license ([LICENSE-MIT](https://opensource.org/licenses/MIT))
 
 at your option.
 
