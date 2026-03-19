@@ -1,6 +1,6 @@
 [package]
 name = "askama_web"
-version = "0.15.1"
+version = "0.15.2"
 edition = "2024"
 description = "A compatibility add-on for Askama to support many different web frameworks"
 keywords = ["markup", "template", "jinja2", "html"]
@@ -25,6 +25,7 @@ bytes_1 = { package = "bytes", version = "1.10.1", optional = true, default-feat
 cot_0_3 = { package = "cot", version = "0.3.0", optional = true, default-features = false }
 cot_0_4 = { package = "cot", version = "0.4.0", optional = true, default-features = false }
 cot_0_5 = { package = "cot", version = "0.5.0", optional = true, default-features = false }
+cot_core_0_6 = { package = "cot_core", version = "0.6.0", optional = true, default-features = false }
 http_0_2 = { package = "http", version = "0.2.0", optional = true, default-features = false }
 http_1 = { package = "http", version = "1.0.0", optional = true, default-features = false }
 log_0_4 = { package = "log", version = "0.4.0", optional = true, default-features = false }
@@ -48,6 +49,8 @@ derive = ["dep:askama_web_derive"]
 "cot-0.3" = ["dep:cot_0_3"]
 "cot-0.4" = ["dep:cot_0_4"]
 "cot-0.5" = ["dep:cot_0_5"]
+"cot-0.6" = ["cot_core-0.6"]
+"cot_core-0.6" = ["dep:cot_core_0_6", "dep:bytes_1", "dep:http_1"]
 "poem-3" = ["dep:poem_3", "dep:bytes_1", "dep:http_1"]
 "rocket-0.5" = ["dep:rocket_0_5"]
 "trillium-0.2" = ["dep:trillium_0_2"]
