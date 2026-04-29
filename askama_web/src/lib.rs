@@ -73,27 +73,28 @@ impl<T: Template> Template for WebTemplate<T> {
     }
 
     #[inline]
-    fn render_into_with_values<W>(&self, writer: &mut W, values: &dyn Values) -> askama::Result<()>
-    where
-        W: fmt::Write + ?Sized,
-    {
+    fn render_into_with_values(
+        &self,
+        writer: &mut dyn fmt::Write,
+        values: &dyn Values,
+    ) -> askama::Result<()> {
         <T as Template>::render_into_with_values(&self.0, writer, values)
     }
 
     #[inline]
-    fn render_into<W: fmt::Write + ?Sized>(&self, writer: &mut W) -> askama::Result<()> {
+    fn render_into(&self, writer: &mut dyn fmt::Write) -> askama::Result<()> {
         <T as Template>::render_into(&self.0, writer)
     }
 
     #[inline]
-    fn write_into<W: std::io::Write + ?Sized>(&self, writer: &mut W) -> std::io::Result<()> {
+    fn write_into(&self, writer: &mut dyn std::io::Write) -> std::io::Result<()> {
         <T as Template>::write_into(&self.0, writer)
     }
 
     #[inline]
-    fn write_into_with_values<W: std::io::Write + ?Sized>(
+    fn write_into_with_values(
         &self,
-        writer: &mut W,
+        writer: &mut dyn std::io::Write,
         values: &dyn Values,
     ) -> std::io::Result<()> {
         <T as Template>::write_into_with_values(&self.0, writer, values)
@@ -104,10 +105,7 @@ impl<T: Template> Template for WebTemplate<T> {
 
 impl<T: Template> FastWritable for WebTemplate<T> {
     #[inline]
-    fn write_into<W>(&self, dest: &mut W, values: &dyn Values) -> askama::Result<()>
-    where
-        W: fmt::Write + ?Sized,
-    {
+    fn write_into(&self, dest: &mut dyn fmt::Write, values: &dyn Values) -> askama::Result<()> {
         <T as FastWritable>::write_into(&self.0, dest, values)
     }
 }
