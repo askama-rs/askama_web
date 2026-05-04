@@ -8,5 +8,5 @@ publish = false
 askama = { workspace = true, features = ["derive"] }
 askama_web = { workspace = true, features = ["derive", "trillium-0.2"] }
 
-trillium = { version = "0.2.20", default-features = false }
-trillium-testing = "0.7.0"
+trillium = { version = "1.0.0", default-features = false }
+trillium-testing = "0.8.0"
